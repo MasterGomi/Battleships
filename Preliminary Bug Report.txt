@@ -1,0 +1,37 @@
+Bugs:
+    GameController:
+        Line 73: Case doesn't have support for selection of easy AI
+        Line 84: Seemingly important line commented out
+        Line 96: Same as above 
+        Line 229: Method seems incomplete; Case on Line 230 has no support for a hit, and the player can't be selected for their turn
+
+    EndingGameController:
+        Line 42: If statement appears to be using incorrect syntax
+
+    DeploymentController:
+        Line 118: Seemingly important line commented out
+        Line 119: Same as above
+        Line 122: Same as above
+        Line 123: Same as above
+        Lines 133-135: Same as above
+        Line 138: Same as above
+        Line 139: Same as above
+        Line 146: Same as above
+        Line 147: Same as above
+        Line 162: Seem incorrect
+    
+    UtilityFunctions:
+        Line 101: Seemingly important line commented out
+        Line 121: Same as above
+    
+    MenuController:
+        Line 117: Seemingly important line commented out, and above comment is inaccurate
+        Line 127: Same as above
+        Line 140: Same as above
+        Line 175: Seemingly important line commented out
+        Line 249: Switch statement cases are incorrect
+
+    HighScoreController:
+        Line 125: DrawText() should begin with "0" instead of " ", as per the above comment
+        Line 137: If statement appears to be using incorrect syntax
+        
