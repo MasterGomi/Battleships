@@ -1,0 +1,37 @@
+General comments:
+    - All <summary> tags appear to be using incorrect formatting (this is likely an artifact from the conversion from vb to c#)
+    - The <summary> for many classes have weird additional spacing. See above
+    - Much of the documentation has minor spelling and grammar errors
+
+Specific notes:
+    - <summary> beginning on line 50 in EndingGameController is slightly inaccurate, as not "any interaction" will advance, only clicking the left mouse button, or pressing enter or escape.
+        - Additionally, the ending is likely supposed to read "highscores", instead of "highSwinGame"
+    - GameController: Line 144 is not incorrect, per se, but would be better described by something along the lines of "necessary for back-end function"
+    - GameController Line 309 is probably meant to read "Handles the user's input"
+    - GameController Line 459 is misleading; it refers to a "next level", however, Battleships doesn't have levels, and it instead refers to the next game or match
+    - The <summary> at line 124 in GameResources should be for the class, as the class doesn't have one, and a new <summary> that actually represents what the method does is required
+    - The <remarks> at lines 54 and 94 in HighscoreController imply that all scores are saved as three digits, when that isn't necessarily the case (as evidenced by opening the highscores.txt file in the resources folder)
+    - Empty <remarks> tag at line 150 in HighscoreController. Perhaps should include that clicking the left mouse button, pressing escape, or pressing enter will advance to next state
+    - <summary> beginning at line 157 in HighscoreController frequently refers to "score" as "sSwinGame" which needs to be fixed
+    - Comments at lines 137, 148, and 162 in MenuController are inaccurate and/or irrelevant
+    - Comment at line 327 of MenuController implies that there is an exit button in the setup menu. This isn't the case
+    - <summary> at the top of UtilityFunctions should be moved to above the UtilityFunctions class declaration, as that it what it is summarising
+    - <summary> at line 227 in UtilityFunctions doesn't do a very good job of describing the purpose of the property
+    - <summary> at the top of AIHardPlayer should be moved to above the AIHardPlayer class declaration, as that it what it is summarising
+    - <param> tags at lines 234 and 235 of AIHardPlayer are incorrect
+    - Empty <param> tags at lines 285, 317, and 318 of AIHardPlayer
+    - <summary> at the top of AIMediumPlayer should be moved to above the AIMediumPlayer class declaration, as that it what it is summarising
+    - <summary> at the top of AIPlayer should be moved to above the AIPlayer class declaration, as that it what it is summarising
+    - <summary> at the top of AttackResults should be moved to above the AttackResults class declaration, as that it what it is summarising
+    - <summary> at the top of BattleShipsGame should be moved to above the BattleShipsGame class declaration, as that it what it is summarising
+    - Empty <param> tag at line 60 of BattleShipsGame
+    - <summary> at the top of ISeaGrid should be moved to above the ISeaGrid interface declaration, as that it what it is summarising
+    - <summary> at the top of Player should be moved to above the Player class declaration, as that it what it is summarising
+    - <summary> at the top of SeaGrid should be moved to above the SeaGrid class declaration, as that it what it is summarising
+    - <summary> at the top of SeaGridAdapter should be moved to above the SeaGridAdapter class declaration, as that it what it is summarising
+    - <summary> at the top of Ship should be moved to above the Ship class declaration, as that it what it is summarising
+    - Smilar documentation to the <summary> at line 75 in Ship should be applied to the declarations at lines 88 and 96
+    - Empty <param> tags at lines 160-162 in Ship
+    - <summary> at the top of Tile should be moved to above the Tile class declaration, as that it what it is summarising
+
+Note: any documentation not specifically mentioned above appears to suitable for use
