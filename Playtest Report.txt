@@ -1,0 +1,15 @@
+Playtest report:
+- Clicking to place ships drops them three spaces below desired destination
+    - This appears to be because the displayed grid is offset compared top where the code interprets the clicks. Ship placement calculations need to be adjusted to accomodate for this
+    - Additionally, as a result, the play button is considered a part of the grid and grid placement is considered first, meaning that the player can only start the game if the ship selected can fit on the grid at corresponding spot, at which point, the ship is placed there, nullifying the previous placement of the selected ship.
+- Randomiser button can trigger placement errors. These are resolved just fine, but something the game does should not alert the player about errors if it is resolved anyway
+    - There is a posibility that this 'randomiser button' is, in fact, supposed to allow the player to rotate their ships, as there is currently no functionality for this
+- Right and up buttons don't appear to be functioning
+- In play, "splashes" is used to count misses, but "misses" would be a better term, and more in line with the above "hits"
+- In play, if either player scores a hit on one of their enemy's ships, they imediately get to fire another shot, which is not a traditional rule of the game
+- When entering name for a high score, text entry field is not wide enough to fit all three characters
+- Despite demonstrating that it's already possible by overlaying the enemy's ship over your board after winning, the destroyed ship isn't overlaid when destroyed, meaning that if any ships are adjacent to each other, it is difficult for the player to know where one ship ends and the other starts, making it difficult for the player to keep track of which ships they have defeated
+    - To be fair, this is also the case in the traditional board game version, but as we can do so in a digital version, it might well be worth it
+- Scoring system is unclear
+- FPS is displayed on screen, but runs of the edge of the screen, meaning it isn't fully ledgible (may be just because the computer used for testing is pulling 1052.6 frames per second)
+    - possibly should be capped at 60 FPS anyway, as there is no reason for it to be any high, as vertical tearing would not be a problem for a game like this, as things are rarely updated, nor are twitch reflexes required)
