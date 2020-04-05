@@ -4,7 +4,8 @@ Playtest report:
     - Additionally, as a result, the play button is considered a part of the grid and grid placement is considered first, meaning that the player can only start the game if the ship selected can fit on the grid at corresponding spot, at which point, the ship is placed there, nullifying the previous placement of the selected ship.
 - Randomiser button can trigger placement errors. These are resolved just fine, but something the game does should not alert the player about errors if it is resolved anyway
     - There is a posibility that this 'randomiser button' is, in fact, supposed to allow the player to rotate their ships, as there is currently no functionality for this
-- Right and up buttons don't appear to be functioning
+- Right and up buttons don't appear to be functioning, but arrow keys light them up
+- Error for trying to place a ship on an occupied space gives incorrect coordinates, even taking into account the offset grid
 - In play, "splashes" is used to count misses, but "misses" would be a better term, and more in line with the above "hits"
 - In play, if either player scores a hit on one of their enemy's ships, they imediately get to fire another shot, which is not a traditional rule of the game
 - When entering name for a high score, text entry field is not wide enough to fit all three characters
