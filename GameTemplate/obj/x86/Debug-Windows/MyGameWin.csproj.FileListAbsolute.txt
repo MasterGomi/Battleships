@@ -1,0 +1,55 @@
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\animations\startup.txt
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\bundles\FileDialog.txt
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\bundles\splash.txt
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\fonts\arial.ttf
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\fonts\cour.ttf
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\fonts\maven_pro_regular.ttf
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\fdFile.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\fdFolder.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\FileDialog_Active.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\FileDialog_Background.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\FileDialog_Inactive.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\FileDialog_Scroll.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\FileDialog_ScrollSmall.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\Swinburne.jpg
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\images\SwinGameAni.png
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\panels\FileDialog.txt
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\sounds\error.wav
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\sounds\SwinGameStart.wav
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\SwinGame.icns
+H:\Labs\2018\BB\GameTemplate\bin\Debug\Resources\SwinGame.ico
+H:\Labs\2018\BB\GameTemplate\bin\Debug\MyGame.exe.config
+H:\Labs\2018\BB\GameTemplate\bin\Debug\MyGame.exe
+H:\Labs\2018\BB\GameTemplate\bin\Debug\MyGame.pdb
+H:\Labs\2018\BB\GameTemplate\bin\Debug\SwinGame.dll
+H:\Labs\2018\BB\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csprojResolveAssemblyReference.cache
+H:\Labs\2018\BB\GameTemplate\obj\x86\Debug-Windows\MyGame.exe
+H:\Labs\2018\BB\GameTemplate\obj\x86\Debug-Windows\MyGame.pdb
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\animations\startup.txt
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\bundles\FileDialog.txt
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\bundles\splash.txt
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\fonts\arial.ttf
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\fonts\cour.ttf
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\fonts\maven_pro_regular.ttf
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\fdFile.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\fdFolder.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\FileDialog_Active.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\FileDialog_Background.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\FileDialog_Inactive.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\FileDialog_Scroll.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\FileDialog_ScrollSmall.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\Swinburne.jpg
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\images\SwinGameAni.png
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\panels\FileDialog.txt
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\sounds\error.wav
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\sounds\SwinGameStart.wav
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\SwinGame.icns
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\Resources\SwinGame.ico
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\MyGame.exe.config
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\MyGame.exe
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\MyGame.pdb
+D:\School\Dev Project 1\temp\GameTemplate\bin\Debug\SwinGame.dll
+D:\School\Dev Project 1\temp\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csprojAssemblyReference.cache
+D:\School\Dev Project 1\temp\GameTemplate\obj\x86\Debug-Windows\MyGameWin.csproj.CopyComplete
+D:\School\Dev Project 1\temp\GameTemplate\obj\x86\Debug-Windows\MyGame.exe
+D:\School\Dev Project 1\temp\GameTemplate\obj\x86\Debug-Windows\MyGame.pdb
