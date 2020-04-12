@@ -1,11 +1,12 @@
 /// <summary>
 /// The SeaGrid is the grid upon which the ships are deployed.
-/// </summary>
 /// <remarks>
 /// The grid is viewable via the ISeaGrid interface as a read only
 /// grid. This can be used in conjuncture with the SeaGridAdapter to
 /// mask the position of the ships.
 /// </remarks>
+/// </summary>
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,7 +25,6 @@ namespace MyGame
 {
 	public class SeaGrid : ISeaGrid
 	{
-
 		private const int _WIDTH = 10;
 		private const int _HEIGHT = 10;
 
@@ -37,12 +37,12 @@ namespace MyGame
 		/// </summary>
 		public event EventHandler Changed;
 
-		/// <summary>
-		/// The width of the sea grid.
-		/// </summary>
-		/// <value>The width of the sea grid.</value>
-		/// <returns>The width of the sea grid.</returns>
-		public int Width
+        /// <summary>
+        /// The width of the sea grid.
+        /// <value>The width of the sea grid</value>
+        /// <returns>The width of the sea grid</returns>
+        /// </summary>
+        public int Width
 		{
 			get
 			{
@@ -50,12 +50,12 @@ namespace MyGame
 			}
 		}
 
-		/// <summary>
-		/// The height of the sea grid
-		/// </summary>
-		/// <value>The height of the sea grid</value>
-		/// <returns>The height of the sea grid</returns>
-		public int Height
+        /// <summary>
+        /// The height of the sea grid.
+        /// <value>The height of the sea grid</value>
+        /// <returns>The height of the sea grid</returns>
+        /// </summary>
+        public int Height
 		{
 			get
 			{
@@ -64,7 +64,7 @@ namespace MyGame
 		}
 
 		/// <summary>
-		/// ShipsKilled returns the number of ships killed
+		/// ShipsKilled returns the number of ships killed.
 		/// </summary>
 		public int ShipsKilled
 		{
@@ -74,13 +74,12 @@ namespace MyGame
 			}
 		}
 
-		/// <summary>
-		/// Show the tile view
-		/// </summary>
-		/// <param name="x">x coordinate of the tile</param>
-		/// <param name="y">y coordiante of the tile</param>
-		/// <returns></returns>
-		public TileView Item(int x, int y)
+        /// <summary>
+        /// Show the tile view.
+        /// <param name="x">x coordinate of the tile</param>
+        /// <param name="y">y coordiante of the tile</param>
+        /// </summary>
+        public TileView Item(int x, int y)
 		{
 				return _GameTiles[x, y].View;
 		}
@@ -112,7 +111,7 @@ namespace MyGame
 			// VBConversions Note: Non-static class variable initialization is below.  Class variables cannot be initially assigned non-static values in C#.
 			_GameTiles = new Tile[Width, Height];
 
-			//fill array with empty Tiles
+			// Fill array with empty Tiles.
 			int i = 0;
 			for (i = 0; i <= Width - 1; i++)
 			{
@@ -125,28 +124,28 @@ namespace MyGame
 			_Ships = ships;
 		}
 
-		/// <summary>
-		/// MoveShips allows for ships to be placed on the seagrid
-		/// </summary>
-		/// <param name="row">the row selected</param>
-		/// <param name="col">the column selected</param>
-		/// <param name="ship">the ship selected</param>
-		/// <param name="direction">the direction the ship is going</param>
-		public void MoveShip(int row, int col, ShipName ship, Direction direction)
+        /// <summary>
+        /// MoveShips allows for ships to be placed on the seagrid.
+        /// <param name="row">the row selected</param>
+        /// <param name="col">the column selected</param>
+        /// <param name="ship">the ship selected</param>
+        /// <param name="direction">the direction the ship is going</param>
+        /// </summary>
+        public void MoveShip(int row, int col, ShipName ship, Direction direction)
 		{
 			Ship newShip = _Ships[ship];
 			newShip.Remove();
 			AddShip(row, col, direction, newShip);
 		}
 
-		/// <summary>
-		/// AddShip add a ship to the SeaGrid
-		/// </summary>
-		/// <param name="row">row coordinate</param>
-		/// <param name="col">col coordinate</param>
-		/// <param name="direction">direction of ship</param>
-		/// <param name="newShip">the ship</param>
-		private void AddShip(int row, int col, Direction direction, Ship newShip)
+        /// <summary>
+        /// AddShip add a ship to the SeaGrid.
+        /// <param name="row">row coordinate</param>
+        /// <param name="col">col coordinate</param>
+        /// <param name="direction">direction of ship</param>
+        /// <param name="newShip">the ship</param>
+        /// </summary>
+        private void AddShip(int row, int col, Direction direction, Ship newShip)
 		{
 			try
 			{
@@ -167,7 +166,7 @@ namespace MyGame
 					dCol = 0;
 				}
 
-				//place ship's tiles in array and into ship object
+				// Place ship's tiles in array and into ship object.
 				int i = 0;
 				for (i = 0; i <= size - 1; i++)
 				{
@@ -186,7 +185,8 @@ namespace MyGame
 			}
 			catch (Exception e)
 			{
-				newShip.Remove(); //if fails remove the ship
+                // If fails remove the ship.
+                newShip.Remove(); 
 				throw (new ApplicationException(e.Message));
 
 			}
@@ -197,18 +197,18 @@ namespace MyGame
 			}
 		}
 
-		/// <summary>
-		/// HitTile hits a tile at a row/col, and whatever tile has been hit, a
-		/// result will be displayed.
-		/// </summary>
-		/// <param name="row">the row at which is being shot</param>
-		/// <param name="col">the cloumn at which is being shot</param>
-		/// <returns>An attackresult (hit, miss, sunk, shotalready)</returns>
-		public AttackResult HitTile(int row, int col)
+        /// <summary>
+        /// HitTile hits a tile at a row/col, and whatever tile has been hit, a
+        /// result will be displayed.
+        /// <param name="row">the row at which is being shot</param>
+        /// <param name="col">the cloumn at which is being shot</param>
+        /// <returns>An attackresult (hit, miss, sunk, shotalready)</returns>
+        /// </summary>
+        public AttackResult HitTile(int row, int col)
 		{
 			try
 			{
-				//tile is already hit
+				// Tile is already hit.
 				if (_GameTiles[row, col].Shot)
 				{
 					return new AttackResult(ResultOfAttack.ShotAlready, "have already attacked [" + System.Convert.ToString(col) + "," + System.Convert.ToString(row) + "]!", row, col);
@@ -216,13 +216,13 @@ namespace MyGame
 
 				_GameTiles[row, col].Shoot();
 
-				//there is no ship on the tile
+				// There is no ship on the tile.
 				if (ReferenceEquals(_GameTiles[row, col].Ship, null))
 				{
 					return new AttackResult(ResultOfAttack.Miss, "missed", row, col);
 				}
 
-				//all ship's tiles have been destroyed
+				// All ship's tiles have been destroyed.
 				if (_GameTiles[row, col].Ship.IsDestroyed)
 				{
 					_GameTiles[row, col].Shot = true;
@@ -230,7 +230,7 @@ namespace MyGame
 					return new AttackResult(ResultOfAttack.Destroyed, _GameTiles[row, col].Ship, "destroyed the enemy's", row, col);
 				}
 
-				//else hit but not destroyed
+				// Else hit but not destroyed.
 				return new AttackResult(ResultOfAttack.Hit, "hit something!", row, col);
 			}
 			finally
