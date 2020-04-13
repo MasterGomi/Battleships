@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// <summary>
+/// The menu controller handles the drawing and user interactions
+/// from the menus in the game. These include the main menu, game
+/// menu and the settings menu.
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -12,27 +18,16 @@ using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using SwinGameSDK;
 
-/// <summary>
-
-/// ''' The menu controller handles the drawing and user interactions
-
-/// ''' from the menus in the game. These include the main menu, game
-
-/// ''' menu and the settings m,enu.
-
-/// ''' </summary>
-
 namespace MyGame
 {
     static class MenuController
     {
-
         /// <summary>
-        ///     ''' The menu structure for the game.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' These are the text captions for the menu items.
-        ///     ''' </remarks>
+        /// The menu structure for the game.
+        /// <remarks>
+        /// These are the text captions for the menu items.
+        /// </remarks>
+        /// </summary>
         private readonly static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
         private static int MENU_TOP = 575;
@@ -65,16 +60,16 @@ namespace MyGame
         private readonly static Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
 
         /// <summary>
-        ///     ''' Handles the processing of user input when the main menu is showing
-        ///     ''' </summary>
+        /// Handles the processing of user input when the main menu is showing.
+        /// </summary>
         public static void HandleMainMenuInput()
         {
             HandleMenuInput(MAIN_MENU, 0, 0);
         }
 
         /// <summary>
-        ///     ''' Handles the processing of user input when the main menu is showing
-        ///     ''' </summary>
+        /// Handles the processing of user input when the setup menu is showing.
+        /// </summary>
         public static void HandleSetupMenuInput()
         {
             bool handled;
@@ -85,23 +80,23 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' Handle input in the game menu.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' Player can return to the game, surrender, or quit entirely
-        ///     ''' </remarks>
+        /// Handle input in the game menu.
+        /// <remarks>
+        /// Player can return to the game, surrender, or quit entirely
+        /// </remarks>
+        /// </summary>
         public static void HandleGameMenuInput()
         {
             HandleMenuInput(GAME_MENU, 0, 0);
         }
 
         /// <summary>
-        ///     ''' Handles input for the specified menu.
-        ///     ''' </summary>
-        ///     ''' <param name="menu">the identifier of the menu being processed</param>
-        ///     ''' <param name="level">the vertical level of the menu</param>
-        ///     ''' <param name="xOffset">the xoffset of the menu</param>
-        ///     ''' <returns>false if a clicked missed the buttons. This can be used to check prior menus.</returns>
+        /// Handles input for the specified menu.
+        /// <param name="menu">the identifier of the menu being processed</param>
+        /// <param name="level">the vertical level of the menu</param>
+        /// <param name="xOffset">the xoffset of the menu</param>
+        /// <returns>false if a clicked missed the buttons. This can be used to check prior menus.</returns>
+        /// </summary>
         private static bool HandleMenuInput(int menu, int level, int xOffset)
         {
             if (SwinGame.KeyTyped(KeyCode.EscapeKey))
@@ -132,62 +127,57 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' Draws the main menu to the screen.
-        ///     ''' </summary>
+        /// Draws the main menu to the screen.
+        /// </summary>
         public static void DrawMainMenu()
         {
             // Clears the Screen to Black
             // SwinGame.DrawText("Main Menu", Color.White, GameFont("ArialLarge"), 50, 50)
-
             DrawButtons(MAIN_MENU);
         }
 
         /// <summary>
-        ///     ''' Draws the Game menu to the screen
-        ///     ''' </summary>
+        /// Draws the Game menu to the screen.
+        /// </summary>
         public static void DrawGameMenu()
         {
             // Clears the Screen to Black
             // SwinGame.DrawText("Paused", Color.White, GameFont("ArialLarge"), 50, 50)
-
             DrawButtons(GAME_MENU);
         }
 
         /// <summary>
-        ///     ''' Draws the settings menu to the screen.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' Also shows the main menu
-        ///     ''' </remarks>
+        /// Draws the settings menu to the screen.
+        /// <remarks>Also shows the main menu</remarks>
+        /// </summary>
         public static void DrawSettings()
         {
             // Clears the Screen to Black
             // SwinGame.DrawText("Settings", Color.White, GameFont("ArialLarge"), 50, 50)
-
             DrawButtons(MAIN_MENU);
             DrawButtons(SETUP_MENU, 1, 1);
         }
 
         /// <summary>
-        ///     ''' Draw the buttons associated with a top level menu.
-        ///     ''' </summary>
-        ///     ''' <param name="menu">the index of the menu to draw</param>
+        /// Draw the buttons associated with a top level menu.
+        /// <param name="menu">the index of the menu to draw</param>
+        /// </summary>
         private static void DrawButtons(int menu)
         {
             DrawButtons(menu, 0, 0);
         }
 
         /// <summary>
-        ///     ''' Draws the menu at the indicated level.
-        ///     ''' </summary>
-        ///     ''' <param name="menu">the menu to draw</param>
-        ///     ''' <param name="level">the level (height) of the menu</param>
-        ///     ''' <param name="xOffset">the offset of the menu</param>
-        ///     ''' <remarks>
-        ///     ''' The menu text comes from the _menuStructure field. The level indicates the height
-        ///     ''' of the menu, to enable sub menus. The xOffset repositions the menu horizontally
-        ///     ''' to allow the submenus to be positioned correctly.
-        ///     ''' </remarks>
+        /// Draws the menu at the indicated level.
+        /// <param name="menu">the menu to draw</param>
+        /// <param name="level">the level (height) of the menu</param>
+        /// <param name="xOffset">the offset of the menu</param>
+        /// <remarks>
+        /// The menu text comes from the _menuStructure field. The level indicates the height
+        /// of the menu, to enable sub menus. The xOffset repositions the menu horizontally
+        /// to allow the submenus to be positioned correctly.
+        /// </remarks>
+        /// </summary>
         private static void DrawButtons(int menu, int level, int xOffset)
         {
             int btnTop;
@@ -213,22 +203,22 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' Determined if the mouse is over one of the button in the main menu.
-        ///     ''' </summary>
-        ///     ''' <param name="button">the index of the button to check</param>
-        ///     ''' <returns>true if the mouse is over that button</returns>
+        /// Determined if the mouse is over one of the button in the main menu.
+        /// <param name="button">the index of the button to check</param>
+        /// <returns>true if the mouse is over that button</returns>
+        /// </summary>
         private static bool IsMouseOverButton(int button)
         {
             return IsMouseOverMenu(button, 0, 0);
         }
 
         /// <summary>
-        ///     ''' Checks if the mouse is over one of the buttons in a menu.
-        ///     ''' </summary>
-        ///     ''' <param name="button">the index of the button to check</param>
-        ///     ''' <param name="level">the level of the menu</param>
-        ///     ''' <param name="xOffset">the xOffset of the menu</param>
-        ///     ''' <returns>true if the mouse is over the button</returns>
+        /// Checks if the mouse is over one of the buttons in a menu.
+        /// <param name="button">the index of the button to check</param>
+        /// <param name="level">the level of the menu</param>
+        /// <param name="xOffset">the xOffset of the menu</param>
+        /// <returns>true if the mouse is over the button</returns>
+        /// </summary>
         private static bool IsMouseOverMenu(int button, int level, int xOffset)
         {
             int btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
@@ -238,10 +228,10 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' A button has been clicked, perform the associated action.
-        ///     ''' </summary>
-        ///     ''' <param name="menu">the menu that has been clicked</param>
-        ///     ''' <param name="button">the index of the button that was clicked</param>
+        /// A button has been clicked, perform the associated action.
+        /// <param name="menu">the menu that has been clicked</param>
+        /// <param name="button">the index of the button that was clicked</param>
+        /// </summary>
         private static void PerformMenuAction(int menu, int button)
         {
             switch (menu)
@@ -267,9 +257,9 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' The main menu was clicked, perform the button's action.
-        ///     ''' </summary>
-        ///     ''' <param name="button">the button pressed</param>
+        /// The main menu was clicked, perform the button's action.
+        /// <param name="button">the button pressed</param>
+        /// </summary>
         private static void PerformMainMenuAction(int button)
         {
             switch (button)
@@ -301,9 +291,9 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' The setup menu was clicked, perform the button's action.
-        ///     ''' </summary>
-        ///     ''' <param name="button">the button pressed</param>
+        /// The setup menu was clicked, perform the button's action.
+        /// <param name="button">the button pressed</param>
+        /// </summary>
         private static void PerformSetupMenuAction(int button)
         {
             switch (button)
@@ -331,9 +321,9 @@ namespace MyGame
         }
 
         /// <summary>
-        ///     ''' The game menu was clicked, perform the button's action.
-        ///     ''' </summary>
-        ///     ''' <param name="button">the button pressed</param>
+        /// The game menu was clicked, perform the button's action.
+        /// <param name="button">the button pressed</param>
+        /// </summary>
         private static void PerformGameMenuAction(int button)
         {
             switch (button)

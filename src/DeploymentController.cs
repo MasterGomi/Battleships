@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// <summary>
+/// The DeploymentController controls the players actions
+/// during the deployment phase.
+/// </summary>
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -11,14 +16,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using SwinGameSDK;
-
-/// <summary>
-
-/// ''' The DeploymentController controls the players actions
-
-/// ''' during the deployment phase.
-
-/// ''' </summary>
 
 namespace MyGame {
     static class DeploymentController
@@ -48,13 +45,13 @@ namespace MyGame {
         private static ShipName _selectedShip = ShipName.Tug;
 
         /// <summary>
-        ///     ''' Handles user input for the Deployment phase of the game.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' Involves selecting the ships, deloying ships, changing the direction
-        ///     ''' of the ships to add, randomising deployment, end then ending
-        ///     ''' deployment
-        ///     ''' </remarks>
+        /// Handles user input for the Deployment phase of the game.
+        /// <remarks>
+        /// Involves selecting the ships, deloying ships, changing the direction
+        /// of the ships to add, randomising deployment, end then ending
+        /// deployment.
+        /// </remarks>
+        /// </summary>
         public static void HandleDeploymentInput()
         {
             if (SwinGame.KeyTyped(KeyCode.EscapeKey))
@@ -89,20 +86,20 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' The user has clicked somewhere on the screen, check if its is a deployment and deploy
-        ///     ''' the current ship if that is the case.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' If the click is in the grid it deploys to the selected location
-        ///     ''' with the indicated direction
-        ///     ''' </remarks>
+        /// The user has clicked somewhere on the screen, check if its is a deployment and deploy
+        /// the current ship if that is the case.
+        /// <remarks>
+        /// If the click is in the grid it deploys to the selected location
+        /// with the indicated direction
+        /// </remarks>
+        /// </summary>
         private static void DoDeployClick()
         {
             Point2D mouse;
 
             mouse = SwinGame.MousePosition();
 
-            // Calculate the row/col clicked
+            // Calculate the row/col clicked.
             int row, col;
             row = Convert.ToInt32(Math.Floor((mouse.Y) / (double)(UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
             col = Convert.ToInt32(Math.Floor((mouse.X - UtilityFunctions.FIELD_LEFT) / (double)(UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
@@ -111,7 +108,7 @@ namespace MyGame {
             {
                 if (col >= 0 & col < GameController.HumanPlayer.PlayerGrid.Width)
                 {
-                    // if in the area try to deploy
+                    // If in the area, try to deploy.
                     try
                     {
                         GameController.HumanPlayer.PlayerGrid.MoveShip(row, col, _selectedShip, _currentDirection);
@@ -126,14 +123,14 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Draws the deployment screen showing the field and the ships
-        ///     ''' that the player can deploy.
-        ///     ''' </summary>
+        /// Draws the deployment screen showing the field and the ships
+        /// that the player can deploy.
+        /// </summary>
         public static void DrawDeployment()
         {
             UtilityFunctions.DrawField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer, true);
 
-            // Draw the Left/Right and Up/Down buttons
+            // Draw the Left/Right and Up/Down buttons.
             if (_currentDirection == Direction.LeftRight)
                 SwinGame.DrawBitmap(GameResources.GameImage("LeftRightButton"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
             else
@@ -160,9 +157,9 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Gets the ship that the mouse is currently over in the selection panel.
-        ///     ''' </summary>
-        ///     ''' <returns>The ship selected or none</returns>
+        /// Gets the ship that the mouse is currently over in the selection panel.
+        /// <returns>The ship selected or none</returns>
+        /// </summary>
         private static ShipName GetShipMouseIsOver()
         {
             foreach (ShipName sn in Enum.GetValues(typeof(ShipName)))
