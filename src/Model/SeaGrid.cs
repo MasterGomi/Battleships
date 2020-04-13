@@ -1,12 +1,3 @@
-/// <summary>
-/// The SeaGrid is the grid upon which the ships are deployed.
-/// <remarks>
-/// The grid is viewable via the ISeaGrid interface as a read only
-/// grid. This can be used in conjuncture with the SeaGridAdapter to
-/// mask the position of the ships.
-/// </remarks>
-/// </summary>
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,7 +14,15 @@ using SwinGameSDK;
 
 namespace MyGame
 {
-	public class SeaGrid : ISeaGrid
+    /// <summary>
+    /// The SeaGrid is the grid upon which the ships are deployed.
+    /// <remarks>
+    /// The grid is viewable via the ISeaGrid interface as a read only
+    /// grid. This can be used in conjuncture with the SeaGridAdapter to
+    /// mask the position of the ships.
+    /// </remarks>
+    /// </summary>
+    public class SeaGrid : ISeaGrid
 	{
 		private const int _WIDTH = 10;
 		private const int _HEIGHT = 10;

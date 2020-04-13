@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// This includes a number of utility methods for
-/// drawing and interacting with the Mouse.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -18,6 +13,10 @@ using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 namespace MyGame {
+    /// <summary>
+    /// This includes a number of utility methods for
+    /// drawing and interacting with the Mouse.
+    /// </summary>
     static class UtilityFunctions
     {
         public const int FIELD_TOP = 122;

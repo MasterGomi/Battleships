@@ -1,11 +1,4 @@
-﻿/// <summary>
-/// The BattleShipsGame controls a big part of the game. It will add the two players
-/// to the game and make sure that both players ships are all deployed before starting the game.
-/// It also allows players to shoot and swap turns between player. It will also check if players 
-/// are destroyed.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -20,9 +13,14 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The BattleShipsGame controls a big part of the game. It will add the two players
+    /// to the game and make sure that both players ships are all deployed before starting the game.
+    /// It also allows players to shoot and swap turns between player. It will also check if players 
+    /// are destroyed.
+    /// </summary>
     public class BattleShipsGame
     {
-
         /// <summary>
         /// The attack delegate type is used to send notifications of the end of an
         /// attack by a player or the AI.
@@ -57,7 +55,7 @@ namespace MyGame
         /// <summary>
         /// AddDeployedPlayer adds both players and will make sure
         /// that the AI player deploys all ships
-        /// <param name="p"></param>
+        /// <param name="p">player</param>
         /// </summary>
         public void AddDeployedPlayer(Player p)
         {

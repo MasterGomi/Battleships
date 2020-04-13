@@ -14,6 +14,10 @@ using SwinGameSDK;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The Resources Class stores all of the Games Media Resources, such as Images, Fonts
+    /// Sounds, Music.
+    /// </summary>
     public static class GameResources
     {
         private static void LoadFonts()
@@ -120,8 +124,7 @@ namespace MyGame
         private static SoundEffect _StartSound;
 
         /// <summary>
-        /// The Resources Class stores all of the Games Media Resources, such as Images, Fonts
-        /// Sounds, Music.
+        /// Loads all resources.
         /// </summary>
         public static void LoadResources()
         {

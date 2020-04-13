@@ -1,13 +1,4 @@
-﻿/// <summary>
-/// A Ship has all the details about itself. For example the shipname,
-/// size, number of hits taken and the location. Its able to add tiles,
-/// remove, hits taken and if its deployed and destroyed.
-/// <remarks>
-/// Deployment information is supplied to allow ships to be drawn.
-/// </remarks>
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -22,6 +13,14 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// A Ship has all the details about itself. For example the shipname,
+    /// size, number of hits taken and the location. Its able to add tiles,
+    /// remove, hits taken and if its deployed and destroyed.
+    /// <remarks>
+    /// Deployment information is supplied to allow ships to be drawn.
+    /// </remarks>
+    /// </summary>
     public class Ship
     {
         private ShipName _shipName;
@@ -88,6 +87,11 @@ namespace MyGame
             }
         }
 
+        /// <summary>
+        /// The column location of the ship.
+        /// <value>The topmost location of the ship</value>
+        /// <returns>the column of the ship</returns>
+        /// </summary>
         public int Column
         {
             get
@@ -96,6 +100,11 @@ namespace MyGame
             }
         }
 
+        /// <summary>
+        /// The direction of the ship.
+        /// <value>The direction of the ship</value>
+        /// <returns>the direction of the ship</returns>
+        /// </summary>
         public Direction Direction
         {
             get
@@ -162,9 +171,9 @@ namespace MyGame
 
         /// <summary>
         /// Record that the ship is now deployed.
-        /// <param name="direction"></param>
-        /// <param name="row"></param>
-        /// <param name="col"></param>
+        /// <param name="direction">the ship's direction</param>
+        /// <param name="row">the ship's column</param>
+        /// <param name="col">the ship's row</param>
         /// </summary>
         internal void Deployed(Direction direction, int row, int col)
         {

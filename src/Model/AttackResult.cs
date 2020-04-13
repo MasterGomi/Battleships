@@ -1,8 +1,4 @@
-﻿/// <summary>
-/// AttackResult gives the result after a shot has been made.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -17,6 +13,9 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// AttackResult gives the result after a shot has been made.
+    /// </summary>
     public class AttackResult
     {
         private ResultOfAttack _Value;

@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// Tile knows its location on the grid, if it is a ship and if it has been 
-/// shot before.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -18,6 +13,10 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// Tile knows its location on the grid, if it is a ship and if it has been 
+    /// shot before.
+    /// </summary>
     public class Tile
     {
         private readonly int _RowValue;        // The row value of the tile.

@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// The DeploymentController controls the players actions
-/// during the deployment phase.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -18,6 +13,10 @@ using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 namespace MyGame {
+    /// <summary>
+    /// The DeploymentController controls the players actions
+    /// during the deployment phase.
+    /// </summary>
     static class DeploymentController
     {
         private const int SHIPS_TOP = 98;

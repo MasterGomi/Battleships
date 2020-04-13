@@ -1,15 +1,15 @@
-﻿/// <summary>
-/// Controls displaying and collecting high score data.
-/// <remarks>
-/// Data is saved to a file.
-/// </remarks>
-/// </summary>
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using SwinGameSDK;
 
 namespace MyGame {
+    /// <summary>
+    /// Controls displaying and collecting high score data.
+    /// <remarks>
+    /// Data is saved to a file.
+    /// </remarks>
+    /// </summary>
     static class HighScoreController
     {
         private const int NAME_WIDTH = 3;
@@ -140,6 +140,7 @@ namespace MyGame {
 
         /// <summary>
         /// Handles the user input during the top score screen.
+        /// <remarks>Clicking the left mouse button, pressing escape, or pressing enter will advance to next state</remarks>
         /// </summary>
         public static void HandleHighScoreInput()
         {
@@ -159,7 +160,7 @@ namespace MyGame {
             if (_Scores.Count == 0)
                 LoadScores();
 
-            // is it a high score
+            // is it a highscore
             if (value > _Scores[_Scores.Count - 1].Value)
             {
                 Score s = new Score();

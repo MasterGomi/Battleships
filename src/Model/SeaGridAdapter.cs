@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// The SeaGridAdapter allows for the change in a sea grid view. Whenever a ship is
-/// presented it changes the view into a sea tile instead of a ship tile.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -18,6 +13,10 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The SeaGridAdapter allows for the change in a sea grid view. Whenever a ship is
+    /// presented it changes the view into a sea tile instead of a ship tile.
+    /// </summary>
     public class SeaGridAdapter : ISeaGrid
     {
         private SeaGrid _MyGrid;

@@ -1,12 +1,4 @@
-﻿/// <summary>
-/// AIHardPlayer is a type of player. This AI will know directions of ships
-/// when it has found 2 ship tiles and will try to destroy that ship. If that ship
-/// is not destroyed it will shoot the other way. Ship still not destroyed, then
-/// the AI knows it has hit multiple ships. Then will try to destoy all around tiles
-/// that have been hit.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -21,6 +13,13 @@ using Microsoft.VisualBasic;
 
 namespace MyGame
 {
+    /// <summary>
+    /// AIHardPlayer is a type of player. This AI will know directions of ships
+    /// when it has found 2 ship tiles and will try to destroy that ship. If that ship
+    /// is not destroyed it will shoot the other way. Ship still not destroyed, then
+    /// the AI knows it has hit multiple ships. Then will try to destoy all around tiles
+    /// that have been hit.
+    /// </summary>
     public class AIHardPlayer : AIPlayer
     {
 
@@ -231,8 +230,8 @@ namespace MyGame
         /// ProcessDetroy is able to process the destroyed ships targets and remove _LastHit targets.
         /// It will also call RemoveShotsAround to remove targets that it was going to shoot at.
         /// <param name="row">the row that was shot at and destroyed</param>
-        /// <param name="col">the row that was shot at and destroyed</param>
-        /// <param name="ship">the row that was shot at and destroyed</param>
+        /// <param name="col">the column that was shot at and destroyed</param>
+        /// <param name="ship">the ship that was shot at and destroyed</param>
         /// </summary>
         private void ProcessDestroy(int row, int col, Ship ship)
         {
@@ -282,7 +281,7 @@ namespace MyGame
         /// the source of the targets belong to the destroyed ship. If they don't put them on a new stack.
         /// Then clear the targets stack and move all the targets that still need to be shot at back 
         /// onto the targets stack.
-        /// <param name="toRemove"></param>
+        /// <param name="toRemove">the target to remove</param>
         /// </summary>
         private void RemoveShotsAround(Location toRemove)
         {
@@ -315,8 +314,8 @@ namespace MyGame
         /// a new location around the last hit location.
         /// It will then set the state of the AI and if it's not Searching or targetingShip then 
         /// start ReOrderTargets.
-        /// <param name="row"></param>
-        /// <param name="col"></param>
+        /// <param name="row">row of last hit location</param>
+        /// <param name="col">column of last hit location</param>
         /// </summary>
         private void ProcessHit(int row, int col)
         {

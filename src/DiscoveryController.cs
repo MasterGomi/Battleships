@@ -1,8 +1,4 @@
-﻿/// <summary>
-/// The battle phase is handled by the DiscoveryController.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -18,6 +14,9 @@ using SwinGameSDK;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The battle phase is handled by the DiscoveryController.
+    /// </summary>
     static class DiscoveryController
     {
 

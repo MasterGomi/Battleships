@@ -1,10 +1,4 @@
-﻿/// <summary>
-/// The GameController is responsible for controlling the game,
-/// managing user input, and displaying the current state of the
-/// game.
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -20,6 +14,11 @@ using SwinGameSDK;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The GameController is responsible for controlling the game,
+    /// managing user input, and displaying the current state of the
+    /// game.
+    /// </summary>
     public static class GameController
     {
         private static BattleShipsGame _theGame;
@@ -304,7 +303,7 @@ namespace MyGame
         }
 
         /// <summary>
-        /// Handles the user SwinGame.
+        /// Handles the user's input.
         /// <remarks>
         /// Reads key and mouse input and converts these into
         /// actions for the game to perform. The actions
@@ -454,7 +453,7 @@ namespace MyGame
         }
 
         /// <summary>
-        /// Sets the difficulty for the next level of the game.
+        /// Sets the difficulty for the next match.
         /// <param name="setting">the new difficulty level</param>
         /// </summary>
         public static void SetDifficulty(AIOption setting)

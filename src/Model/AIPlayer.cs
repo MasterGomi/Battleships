@@ -1,9 +1,4 @@
-﻿/// <summary>
-/// The AIPlayer is a type of player. It can readomly deploy ships, it also has the
-/// functionality to generate coordinates and shoot at tiles
-/// </summary>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -19,9 +14,12 @@ using SwinGameSDK;
 
 namespace MyGame
 {
+    /// <summary>
+    /// The AIPlayer is a type of player. It can readomly deploy ships, it also has the
+    /// functionality to generate coordinates and shoot at tiles
+    /// </summary>
     public abstract class AIPlayer : Player
     {
-
         /// <summary>
         /// Location can store the location of the last hit made by an
         /// AI Player. The use of which determines the difficulty.
