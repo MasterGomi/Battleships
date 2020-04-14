@@ -82,7 +82,8 @@ namespace MyGame
             /// </summary>
             public static bool operator ==(Location @this, Location other)
             {
-                return @this != null && other != null && @this.Row == other.Row && @this.Column == other.Column;
+                if (ReferenceEquals(@this, null) || ReferenceEquals(other, null)) { return false; }
+                return /*@this != null && other != null &&*/ @this.Row == other.Row && @this.Column == other.Column;
             }
 
             /// <summary>
@@ -93,7 +94,8 @@ namespace MyGame
             /// </summary>
             public static bool operator !=(Location @this, Location other)
             {
-                return @this == null || other == null || @this.Row != other.Row || @this.Column != other.Column;
+                if(ReferenceEquals(@this, null) || ReferenceEquals(other, null)) { return true; }
+                return /*@this == null || other == null ||*/ @this.Row != other.Row || @this.Column != other.Column;
             }
         }
 
