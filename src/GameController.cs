@@ -142,7 +142,7 @@ namespace MyGame
         private static void GridChanged(object sender, EventArgs args)
         {
             DrawScreen();
-            SwinGame.RefreshScreen(60);
+            SwinGame.RefreshScreen();
         }
 
         private static void PlayHitSequence(int row, int column, bool showAnimation)
@@ -150,7 +150,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddExplosion(row, column);
 
-            Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+            //Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -160,7 +160,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddSplash(row, column);
 
-            Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+            //Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -188,26 +188,26 @@ namespace MyGame
                 case ResultOfAttack.Destroyed:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        //Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
                         break;
                     }
 
                 case ResultOfAttack.GameOver:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        //Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
-                        while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
-                        {
-                            SwinGame.Delay(10);
-                            SwinGame.RefreshScreen(60);
-                        }
+                        //while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
+                        //{
+                        //    SwinGame.Delay(10);
+                        //    SwinGame.RefreshScreen();
+                        //}
 
-                        if (HumanPlayer.IsDestroyed)
-                            Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
-                        else
-                            Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
-                        break;
+                        //if (HumanPlayer.IsDestroyed)
+                            //Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+                        //else
+                            //Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+                        //break;
                     }
 
                 case ResultOfAttack.Hit:
@@ -224,7 +224,7 @@ namespace MyGame
 
                 case ResultOfAttack.ShotAlready:
                     {
-                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                        //Audio.PlaySoundEffect(GameResources.GameSound("Error"));
                         break;
                     }
             }
@@ -420,7 +420,7 @@ namespace MyGame
 
             UtilityFunctions.DrawAnimations();
 
-            SwinGame.RefreshScreen(60);
+            SwinGame.RefreshScreen();
         }
 
         /// <summary>

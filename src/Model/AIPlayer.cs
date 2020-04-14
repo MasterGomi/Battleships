@@ -154,7 +154,7 @@ namespace MyGame
 
                 SwinGame.Delay(5);
                 SwinGame.ProcessEvents();
-                SwinGame.RefreshScreen(60);
+                SwinGame.RefreshScreen();
             }
         }
     }

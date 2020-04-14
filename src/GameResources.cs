@@ -57,13 +57,13 @@ namespace MyGame
 
         private static void LoadSounds()
         {
-            NewSound("Error", "error.wav");
-            NewSound("Hit", "hit.wav");
-            NewSound("Sink", "sink.wav");
-            NewSound("Siren", "siren.wav");
-            NewSound("Miss", "watershot.wav");
-            NewSound("Winner", "winner.wav");
-            NewSound("Lose", "lose.wav");
+            //NewSound("Error", "error.wav");
+            //NewSound("Hit", "hit.wav");
+            //NewSound("Sink", "sink.wav");
+            //NewSound("Siren", "siren.wav");
+            //NewSound("Miss", "watershot.wav");
+            //NewSound("Winner", "winner.wav");
+            //NewSound("Lose", "lose.wav");
         }
 
         private static void LoadMusic()
@@ -98,7 +98,7 @@ namespace MyGame
         /// </summary>
         public static SoundEffect GameSound(string sound)
         {
-            return _Sounds[sound];
+            //return _Sounds[sound];
         }
 
         /// <summary>
@@ -163,12 +163,12 @@ namespace MyGame
         {
             _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("SplashBack.png", ResourceKind.BitmapResource));
             SwinGame.DrawBitmap(_Background, 0, 0);
-            SwinGame.RefreshScreen(60);
+            SwinGame.RefreshScreen();
             SwinGame.ProcessEvents();
 
             _Animation = SwinGame.LoadBitmap(SwinGame.PathToResource("SwinGameAni.jpg", ResourceKind.BitmapResource));
             _LoadingFont = SwinGame.LoadFont(SwinGame.PathToResource("arial.ttf", ResourceKind.FontResource), 12);
-            _StartSound = Audio.LoadSoundEffect(SwinGame.PathToResource("SwinGameStart.ogg", ResourceKind.SoundResource));
+            //_StartSound = Audio.LoadSoundEffect(SwinGame.PathToResource("SwinGameStart.ogg", ResourceKind.SoundResource));
 
             _LoaderFull = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_full.png", ResourceKind.BitmapResource));
             _LoaderEmpty = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_empty.png", ResourceKind.BitmapResource));
@@ -180,7 +180,7 @@ namespace MyGame
         {
             const int ANI_CELL_COUNT = 11;
 
-            Audio.PlaySoundEffect(_StartSound);
+            //Audio.PlaySoundEffect(_StartSound);
             SwinGame.Delay(200);
 
             int i;
@@ -188,7 +188,7 @@ namespace MyGame
             {
                 SwinGame.DrawBitmap(_Background, 0, 0);
                 SwinGame.Delay(20);
-                SwinGame.RefreshScreen(60);
+                SwinGame.RefreshScreen();
                 SwinGame.ProcessEvents();
             }
 
@@ -220,7 +220,7 @@ namespace MyGame
             SwinGame.DrawText(message, Color.White, Color.Transparent, _LoadingFont, FontAlignment.AlignCenter, toDraw);
             // SwinGame.DrawTextLines(message, Color.White, Color.Transparent, _LoadingFont, FontAlignment.AlignCenter, TX, TY, TW, TH)
 
-            SwinGame.RefreshScreen(60);
+            SwinGame.RefreshScreen();
             SwinGame.ProcessEvents();
         }
 
@@ -229,13 +229,13 @@ namespace MyGame
             SwinGame.ProcessEvents();
             SwinGame.Delay(500);
             SwinGame.ClearScreen();
-            SwinGame.RefreshScreen(60);
+            SwinGame.RefreshScreen();
             SwinGame.FreeFont(_LoadingFont);
             SwinGame.FreeBitmap(_Background);
             SwinGame.FreeBitmap(_Animation);
             SwinGame.FreeBitmap(_LoaderEmpty);
             SwinGame.FreeBitmap(_LoaderFull);
-            Audio.FreeSoundEffect(_StartSound);
+            //Audio.FreeSoundEffect(_StartSound);
             SwinGame.ChangeScreenSize(width, height);
         }
 
@@ -261,7 +261,7 @@ namespace MyGame
 
         private static void NewSound(string soundName, string filename)
         {
-            _Sounds.Add(soundName, Audio.LoadSoundEffect(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
+            //_Sounds.Add(soundName, Audio.LoadSoundEffect(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
         }
 
         private static void NewMusic(string musicName, string filename)
@@ -298,7 +298,7 @@ namespace MyGame
             FreeFonts();
             FreeImages();
             FreeMusic();
-            FreeSounds();
+            //FreeSounds();
             SwinGame.ProcessEvents();
         }
     }

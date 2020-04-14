@@ -49,8 +49,8 @@ namespace MyGame {
         /// <remarks>
         /// The format is:
         /// # of scores
-        /// NNNSSS
-        /// Where NNN is the name and SSS is the score.
+        /// NNNS*
+        /// Where NNN represents the three-letter name and S* represents the score with as many digits as required.
         /// </remarks>
         /// </summary>
         private static void LoadScores()
@@ -181,7 +181,7 @@ namespace MyGame {
                     UtilityFunctions.DrawBackground();
                     DrawHighScores();
                     SwinGame.DrawText("Name: ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, ENTRY_TOP);
-                    SwinGame.RefreshScreen(60);
+                    SwinGame.RefreshScreen();
                 }
 
                 s.Name = SwinGame.TextReadAsASCII();

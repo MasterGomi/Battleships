@@ -3,38 +3,32 @@ using System.Collections.Generic;
 using System.IO;
 using SwinGameSDK;
 
-/// <summary>
-
-/// ''' Controls displaying and collecting high score data.
-
-/// ''' </summary>
-
-/// ''' <remarks>
-
-/// ''' Data is saved to a file.
-
-/// ''' </remarks>
-
 namespace MyGame {
+    /// <summary>
+    /// Controls displaying and collecting high score data.
+    /// <remarks>
+    /// Data is saved to a file.
+    /// </remarks>
+    /// </summary>
     static class HighScoreController
     {
         private const int NAME_WIDTH = 3;
         private const int SCORES_LEFT = 490;
 
         /// <summary>
-        ///     ''' The score structure is used to keep the name and
-        ///     ''' score of the top players together.
-        ///     ''' </summary>
+        /// The score structure is used to keep the name and
+        /// score of the top players together.
+        /// </summary>
         private struct Score : IComparable
         {
             public string Name;
             public int Value;
 
             /// <summary>
-            ///         ''' Allows scores to be compared to facilitate sorting
-            ///         ''' </summary>
-            ///         ''' <param name="obj">the object to compare to</param>
-            ///         ''' <returns>a value that indicates the sort order</returns>
+            /// Allows scores to be compared to facilitate sorting
+            /// <param name="obj">the object to compare to</param>
+            /// <returns>a value that indicates the sort order</returns>
+            /// </summary>
             public int CompareTo(object obj)
             {
                 if (obj is Score)
@@ -51,15 +45,14 @@ namespace MyGame {
         private static List<Score> _Scores = new List<Score>();
 
         /// <summary>
-        ///     ''' Loads the scores from the highscores text file.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' The format is
-        ///     ''' # of scores
-        ///     ''' NNNSSS
-        ///     ''' 
-        ///     ''' Where NNN is the name and SSS is the score
-        ///     ''' </remarks>
+        /// Loads the scores from the highscores text file.
+        /// <remarks>
+        /// The format is:
+        /// # of scores
+        /// NNNS*
+        /// Where NNN represents the three-letter name and S* represents the score with as many digits as required.
+        /// </remarks>
+        /// </summary>
         private static void LoadScores()
         {
             string filename;
@@ -91,15 +84,14 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Saves the scores back to the highscores text file.
-        ///     ''' </summary>
-        ///     ''' <remarks>
-        ///     ''' The format is
-        ///     ''' # of scores
-        ///     ''' NNNSSS
-        ///     ''' 
-        ///     ''' Where NNN is the name and SSS is the score
-        ///     ''' </remarks>
+        /// Saves the scores back to the highscores text file.
+        /// <remarks>
+        /// The format is:
+        /// # of scores
+        /// NNNSSS
+        /// Where NNN is the name and SSS is the score.
+        /// </remarks>
+        /// </summary>
         private static void SaveScores()
         {
             string filename;
@@ -117,8 +109,8 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Draws the high scores to the screen.
-        ///     ''' </summary>
+        /// Draws the high scores to the screen.
+        /// </summary>
         public static void DrawHighScores()
         {
             const int SCORES_HEADING = 40;
@@ -138,7 +130,7 @@ namespace MyGame {
 
                 s = _Scores[i];
 
-                // for scores 1 - 9 use 01 - 09
+                // For scores 1 - 9 use 01 - 09
                 if (i < 9)
                     SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
                 else
@@ -147,9 +139,9 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Handles the user input during the top score screen.
-        ///     ''' </summary>
-        ///     ''' <remarks></remarks>
+        /// Handles the user input during the top score screen.
+        /// <remarks>Clicking the left mouse button, pressing escape, or pressing enter will advance to next state</remarks>
+        /// </summary>
         public static void HandleHighScoreInput()
         {
             if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.EscapeKey) || SwinGame.KeyTyped(KeyCode.ReturnKey))
@@ -157,12 +149,10 @@ namespace MyGame {
         }
 
         /// <summary>
-        ///     ''' Read the user's name for their highsSwinGame.
-        ///     ''' </summary>
-        ///     ''' <param name="value">the player's sSwinGame.</param>
-        ///     ''' <remarks>
-        ///     ''' This verifies if the score is a highsSwinGame.
-        ///     ''' </remarks>
+        /// Read the user's name for their highscore.
+        /// <param name="value">the player's score.</param>
+        /// <remarks>This verifies if the score is a highscore.</remarks>
+        /// </summary>
         public static void ReadHighScore(int value)
         {
             const int ENTRY_TOP = 500;
@@ -170,7 +160,7 @@ namespace MyGame {
             if (_Scores.Count == 0)
                 LoadScores();
 
-            // is it a high score
+            // is it a highscore
             if (value > _Scores[_Scores.Count - 1].Value)
             {
                 Score s = new Score();
@@ -191,7 +181,7 @@ namespace MyGame {
                     UtilityFunctions.DrawBackground();
                     DrawHighScores();
                     SwinGame.DrawText("Name: ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, ENTRY_TOP);
-                    SwinGame.RefreshScreen(60);
+                    SwinGame.RefreshScreen();
                 }
 
                 s.Name = SwinGame.TextReadAsASCII();

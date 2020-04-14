@@ -226,7 +226,7 @@ namespace MyGame {
         private static string _message;
 
         /// <summary>
-        /// The message to display
+        /// The stored message. Will be displayed with DrawMessage().
         /// <value>The message to display</value>
         /// <returns>The message to display</returns>
         /// </summary>
