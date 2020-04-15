@@ -150,7 +150,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddExplosion(row, column);
 
-            //Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+            Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -160,7 +160,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddSplash(row, column);
 
-            //Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+            Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -188,25 +188,25 @@ namespace MyGame
                 case ResultOfAttack.Destroyed:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        //Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
                         break;
                     }
 
                 case ResultOfAttack.GameOver:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        //Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
 
-                        //while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
-                        //{
-                        //    SwinGame.Delay(10);
-                        //    SwinGame.RefreshScreen();
-                        //}
+                        while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
+                        {
+                            SwinGame.Delay(10);
+                            SwinGame.RefreshScreen();
+                        }
 
-                        //if (HumanPlayer.IsDestroyed)
-                            //Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
-                        //else
-                            //Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+                        if (HumanPlayer.IsDestroyed)
+                            Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+                        else
+                            Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
                         break;
                     }
 
@@ -224,7 +224,7 @@ namespace MyGame
 
                 case ResultOfAttack.ShotAlready:
                     {
-                        //Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
                         break;
                     }
             }

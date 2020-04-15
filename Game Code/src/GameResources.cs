@@ -57,13 +57,13 @@ namespace MyGame
 
         private static void LoadSounds()
         {
-            //NewSound("Error", "error.wav");
-            //NewSound("Hit", "hit.wav");
-            //NewSound("Sink", "sink.wav");
-            //NewSound("Siren", "siren.wav");
-            //NewSound("Miss", "watershot.wav");
-            //NewSound("Winner", "winner.wav");
-            //NewSound("Lose", "lose.wav");
+            NewSound("Error", "error.wav");
+            NewSound("Hit", "hit.wav");
+            NewSound("Sink", "sink.wav");
+            NewSound("Siren", "siren.wav");
+            NewSound("Miss", "watershot.wav");
+            NewSound("Winner", "winner.wav");
+            NewSound("Lose", "lose.wav");
         }
 
         private static void LoadMusic()
@@ -98,7 +98,8 @@ namespace MyGame
         /// </summary>
         public static SoundEffect GameSound(string sound)
         {
-            //return _Sounds[sound];
+            return _Sounds[sound];
+            //return null; // Temp. Part of resolving (ignoring) SwinGame issues.
         }
 
         /// <summary>
@@ -168,7 +169,7 @@ namespace MyGame
 
             _Animation = SwinGame.LoadBitmap(SwinGame.PathToResource("SwinGameAni.jpg", ResourceKind.BitmapResource));
             _LoadingFont = SwinGame.LoadFont(SwinGame.PathToResource("arial.ttf", ResourceKind.FontResource), 12);
-            //_StartSound = Audio.LoadSoundEffect(SwinGame.PathToResource("SwinGameStart.ogg", ResourceKind.SoundResource));
+            _StartSound = Audio.LoadSoundEffect(SwinGame.PathToResource("SwinGameStart.ogg", ResourceKind.SoundResource));
 
             _LoaderFull = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_full.png", ResourceKind.BitmapResource));
             _LoaderEmpty = SwinGame.LoadBitmap(SwinGame.PathToResource("loader_empty.png", ResourceKind.BitmapResource));
@@ -180,7 +181,7 @@ namespace MyGame
         {
             const int ANI_CELL_COUNT = 11;
 
-            //Audio.PlaySoundEffect(_StartSound);
+            Audio.PlaySoundEffect(_StartSound);
             SwinGame.Delay(200);
 
             int i;
@@ -261,7 +262,7 @@ namespace MyGame
 
         private static void NewSound(string soundName, string filename)
         {
-            //_Sounds.Add(soundName, Audio.LoadSoundEffect(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
+            _Sounds.Add(soundName, Audio.LoadSoundEffect(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
         }
 
         private static void NewMusic(string musicName, string filename)
