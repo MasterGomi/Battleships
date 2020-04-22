@@ -1,15 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 namespace MyGame
@@ -27,7 +17,7 @@ namespace MyGame
 
         private static Stack<GameState> _state = new Stack<GameState>();
 
-        private static AIOption _aiSetting;
+        private static AIOption _aiSetting = AIOption.Easy;
 
         /// <summary>
         /// Returns the current state of the game, indicating which screen is
@@ -95,6 +85,11 @@ namespace MyGame
             // Create the players.
             switch (_aiSetting)
             {
+                case AIOption.Easy:
+                    {
+                        _ai = new AIHardPlayer(_theGame);
+                        break;
+                    }
                 case AIOption.Medium:
                     {
                         _ai = new AIMediumPlayer(_theGame);
@@ -106,12 +101,11 @@ namespace MyGame
                         _ai = new AIHardPlayer(_theGame);
                         break;
                     }
-
                 default:
                     {
-                        _ai = new AIHardPlayer(_theGame);
-                        break;
+                        throw new ArgumentException("_aiSetting did not hold an expected value");
                     }
+                
             }
 
             _human = new Player(_theGame);
@@ -142,7 +136,7 @@ namespace MyGame
         private static void GridChanged(object sender, EventArgs args)
         {
             DrawScreen();
-            SwinGame.RefreshScreen();
+            SwinGame.RefreshScreen(60);
         }
 
         private static void PlayHitSequence(int row, int column, bool showAnimation)
@@ -200,7 +194,7 @@ namespace MyGame
                         while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
                         {
                             SwinGame.Delay(10);
-                            SwinGame.RefreshScreen();
+                            SwinGame.RefreshScreen(60);
                         }
 
                         if (HumanPlayer.IsDestroyed)
@@ -420,7 +414,7 @@ namespace MyGame
 
             UtilityFunctions.DrawAnimations();
 
-            SwinGame.RefreshScreen();
+            SwinGame.RefreshScreen(60);
         }
 
         /// <summary>

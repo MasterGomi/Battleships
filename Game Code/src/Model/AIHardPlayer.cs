@@ -1,15 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 
 namespace MyGame
 {
@@ -264,7 +254,7 @@ namespace MyGame
                 // Find the source in _LastHit
                 foreach (Target t in _LastHit)
                 {
-                    if ((!foundOriginal && t.ShotAt == source) || (foundOriginal & t.Source == source))
+                    if ((!foundOriginal && t.ShotAt == source) || (foundOriginal && t.Source == source))
                     {
                         current = t;
                         _LastHit.Remove(t);

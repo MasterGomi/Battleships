@@ -1,15 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 namespace MyGame {
@@ -56,9 +45,9 @@ namespace MyGame {
             if (SwinGame.KeyTyped(KeyCode.EscapeKey))
                 GameController.AddNewState(GameState.ViewingGameMenu);
 
-            if (SwinGame.KeyTyped(KeyCode.UpKey) | SwinGame.KeyTyped(KeyCode.DownKey))
+            if (SwinGame.KeyTyped(KeyCode.UpKey) || SwinGame.KeyTyped(KeyCode.DownKey))
                 _currentDirection = Direction.UpDown;
-            if (SwinGame.KeyTyped(KeyCode.LeftKey) | SwinGame.KeyTyped(KeyCode.RightKey))
+            if (SwinGame.KeyTyped(KeyCode.LeftKey) || SwinGame.KeyTyped(KeyCode.RightKey))
                 _currentDirection = Direction.LeftRight;
 
             if (SwinGame.KeyTyped(KeyCode.RKey))
@@ -73,7 +62,7 @@ namespace MyGame {
                 else
                     DoDeployClick();
 
-                if (GameController.HumanPlayer.ReadyToDeploy & UtilityFunctions.IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT))
+                if (GameController.HumanPlayer.ReadyToDeploy && UtilityFunctions.IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT))
                     GameController.EndDeployment();
                 else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT))
                     _currentDirection = Direction.LeftRight;
@@ -103,9 +92,9 @@ namespace MyGame {
             row = Convert.ToInt32(Math.Floor((mouse.Y) / (double)(UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
             col = Convert.ToInt32(Math.Floor((mouse.X - UtilityFunctions.FIELD_LEFT) / (double)(UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
 
-            if (row >= 0 & row < GameController.HumanPlayer.PlayerGrid.Height)
+            if (row >= 0 && row < GameController.HumanPlayer.PlayerGrid.Height)
             {
-                if (col >= 0 & col < GameController.HumanPlayer.PlayerGrid.Width)
+                if (col >= 0 && col < GameController.HumanPlayer.PlayerGrid.Width)
                 {
                     // If in the area, try to deploy.
                     try
@@ -143,7 +132,10 @@ namespace MyGame {
                 if (i >= 0)
                 {
                     if (sn == _selectedShip)
+                    {
                         SwinGame.DrawBitmap(GameResources.GameImage("SelectedShip"), SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT);
+                        break;
+                    }
                 }
             }
 

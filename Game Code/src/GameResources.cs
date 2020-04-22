@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
+﻿using System.Collections.Generic;
 using SwinGameSDK;
 
 namespace MyGame
@@ -164,7 +153,7 @@ namespace MyGame
         {
             _Background = SwinGame.LoadBitmap(SwinGame.PathToResource("SplashBack.png", ResourceKind.BitmapResource));
             SwinGame.DrawBitmap(_Background, 0, 0);
-            SwinGame.RefreshScreen();
+            SwinGame.RefreshScreen(60);
             SwinGame.ProcessEvents();
 
             _Animation = SwinGame.LoadBitmap(SwinGame.PathToResource("SwinGameAni.jpg", ResourceKind.BitmapResource));
@@ -189,7 +178,7 @@ namespace MyGame
             {
                 SwinGame.DrawBitmap(_Background, 0, 0);
                 SwinGame.Delay(20);
-                SwinGame.RefreshScreen();
+                SwinGame.RefreshScreen(60);
                 SwinGame.ProcessEvents();
             }
 
@@ -221,7 +210,7 @@ namespace MyGame
             SwinGame.DrawText(message, Color.White, Color.Transparent, _LoadingFont, FontAlignment.AlignCenter, toDraw);
             // SwinGame.DrawTextLines(message, Color.White, Color.Transparent, _LoadingFont, FontAlignment.AlignCenter, TX, TY, TW, TH)
 
-            SwinGame.RefreshScreen();
+            SwinGame.RefreshScreen(60);
             SwinGame.ProcessEvents();
         }
 
@@ -230,7 +219,7 @@ namespace MyGame
             SwinGame.ProcessEvents();
             SwinGame.Delay(500);
             SwinGame.ClearScreen();
-            SwinGame.RefreshScreen();
+            SwinGame.RefreshScreen(60);
             SwinGame.FreeFont(_LoadingFont);
             SwinGame.FreeBitmap(_Background);
             SwinGame.FreeBitmap(_Animation);

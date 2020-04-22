@@ -1,10 +1,10 @@
 General:
-    All if statements containing "and" conditions are using the logical operator "&". This may cause bugs in some edge cases and it would be wiser and more efficient to use "&&". (This is likely a result of the conversion from vb to c#)
+    RESOLVED: All if statements containing "and" conditions are using the logical operator "&". This may cause bugs in some edge cases and it would be wiser and more efficient to use "&&". (This is likely a result of the conversion from vb to c#)
         - Likewise, the if statements using "or" conditions are using the logical operator "|". Unlike with "&", using "|" instead of "||" isn't likely to ever cause bugs, but using "||" is better in most cases and may be slightly more efficient
-    All files have many unnecessary "using" statements, this is likely a result of the c# conversion trying to ensure correct functionality
+    RESOLVED: All files have many unnecessary "using" statements, this is likely a result of the c# conversion trying to ensure correct functionality
         - Removing these would change very little, but would technically make compiling more efficient
-    All switch statement case declarations are using incorrect syntax (as a result of the conversion)
-    Regarding fps cap mentioned in the playtest report, this can be achieve by supplying all calls of "RefreshScreen()" with the parameter "60" (or whatever the cap is to be set at)
+    RESOLVED: All switch statement case declarations are using incorrect syntax (as a result of the conversion)
+    RESOLVED: Regarding fps cap mentioned in the playtest report, this can be achieve by supplying all calls of "RefreshScreen()" with the parameter "60" (or whatever the cap is to be set at)
     Many methods (such as the one at line 218 in MenuController) can be removed entirely by giving default parameters to the methods that they call (line 230 in the case of the previous example)
 
 DeploymentController:
@@ -15,13 +15,13 @@ GameController:
     Line 98: Switch statement is incorrect, as a selection of easy difficulty will result in a hard AI being selected
 
 GameLogic:
-    Line 19: The entire condition is bizare.
+    RESOLVED: Line 19: The entire condition is bizare.
         - Whilst "!SwinGame.WindowCloseRequested() == true" works, there are better ways to write it, simple "!SwinGame.WindowCloseRequested()" being the best
         - The real problem is "CurrentState == GameState.Quitting" as this will cause an infinite loop stuck in the "Quitting" phase. Instead, this should be "CurrentState != GameState.Quitting".
         - Finally, the logical operator here should be "and" (&) instead of "or" (|), as we only want the game to continue when neither of these conditions are true.
 
 HighscoreController:
-    Line 141: DrawText() should begin with "0" instead of " ", as per the above comment
+    RESOLVED: Line 141: DrawText() should begin with "0" instead of " ", as per the above comment
     Regarding the note in the playtest report about the text entry field for a highscore name not being wide enough: line 182 is likely the line that needs to be changed to accomodate this
 
 MenuController:
@@ -29,12 +29,11 @@ MenuController:
 
 UtilityFunctions:
     Line 120: This is the method that would need to be altered to allow for the showing of destroyed ships as mentioned in the playtest report
-    Line 288: This is the line that is to be altered if the FPS should remain readable *without* capping the FPS
+    Line 288: This is the line that is to be altered if the FPS should remain readable *without* capping the FPS (at present, FPS has been capped at 60)
     Line 293: Should call for an explosion animation, instead of a splash animation
 
 Player:
     Lines 132 and 219: "TODO Change to default(_) if this is not a reference type"
-    Lines 188 and 203: These methods are identical, therefore only one is necessary
     Line 280: This call, and possibly the underlying method, is what would need to be changed to remove error warnings during randomisation (reccomend simply adding a "suppress" parameter to the method and not alert the player if true)
 
 Tile:
@@ -47,23 +46,23 @@ Unnecessary(?) lines commented out at:
 
 Minor notes:
     DeploymentController:
-        - Efficiency could be increased slightly by adding a "break;" statement after line 148
+        - RESOLVED: Efficiency could be increased slightly by adding a "break;" statement after line 148
 
     EndingGameController:
-        - "whatShouldIPrint" (Declared on line 32) is a poor name for a variable and isn't inline with our agreed upon coding conventions
+        - RESOLVED: "whatShouldIPrint" (Declared on line 32) is a poor name for a variable and isn't inline with our agreed upon coding conventions
 
     GameController:
-        - Line 98's switch statement uses the "default" line to imply a selection of easy difficulty by the player, but this with also catch any abnormal assignments to "_aisetting". As "_aisetting" is an enumeration, it is pretty much impossible for something unexpected to be assigned, however, the performance penalty for adding a case for "AIOption.Hard" and using "default" for an exception is unnoticeable but is safer
+        - RESOLVED: Line 98's switch statement uses the "default" line to imply a selection of easy difficulty by the player, but this with also catch any abnormal assignments to "_aisetting". As "_aisetting" is an enumeration, it is pretty much impossible for something unexpected to be assigned, however, the performance penalty for adding a case for "AIOption.Hard" and using "default" for an exception is unnoticeable but is safer
 
     GameResources:
         - Assuming no method calls in the chain are asynchronous (they almost certainly aren't), "LoadResources()" (defined at line 129) has entirely unnecessary "Delay()" calls that only slow the program to give the illusion of increased loading time, which seems bizzare and should probably be cut out
-        - Entirely unnecessary variable declarations at lines 274, 281, 288, 295 (could be a result of the code conversion)
+        - RESOLVED: Entirely unnecessary variable declarations at lines 274, 281, 288, 295 (could be a result of the code conversion)
     
     HighscoreController:
-        - At line 198, "System.Convert.ToChar(" ")" can be rewritten as ' ' such that the call becomes "[...]new string(' ', 3 - s.Name.Length);"
+        - RESOLVED: At line 198, "System.Convert.ToChar(" ")" can be rewritten as ' ' such that the call becomes "[...]new string(' ', 3 - s.Name.Length);"
 
     UtilityFunctions:
-        - Given that the property at line 232 has full "get" and "set" permissions, there isn't a need for the field declared at line 225 (especially given that it is refered to via the property even within the same class)
+        - RESOLVED: Given that the property at line 232 has full "get" and "set" permissions, there isn't a need for the field declared at line 225 (especially given that it is refered to via the property even within the same class)
     SeaGrid:
-        Line 15: "VBConversions Note: Initial value cannot be assigned here since it is non-static.  Assignment has been moved to the class constructors."
+        RESOLVED: Line 15: "VBConversions Note: Initial value cannot be assigned here since it is non-static.  Assignment has been moved to the class constructors."
             - And line 99: "VBConversions Note: Non-static class variable initialization is below.  Class variables cannot be initially assigned non-static values in C#."

@@ -1,15 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using SwinGameSDK;
 
 namespace MyGame
@@ -50,9 +39,9 @@ namespace MyGame
             row = Convert.ToInt32(Math.Floor((mouse.Y - UtilityFunctions.FIELD_TOP) / (double)(UtilityFunctions.CELL_HEIGHT + UtilityFunctions.CELL_GAP)));
             col = Convert.ToInt32(Math.Floor((mouse.X - UtilityFunctions.FIELD_LEFT) / (double)(UtilityFunctions.CELL_WIDTH + UtilityFunctions.CELL_GAP)));
 
-            if (row >= 0 & row < GameController.HumanPlayer.EnemyGrid.Height)
+            if (row >= 0 && row < GameController.HumanPlayer.EnemyGrid.Height)
             {
-                if (col >= 0 & col < GameController.HumanPlayer.EnemyGrid.Width)
+                if (col >= 0 && col < GameController.HumanPlayer.EnemyGrid.Width)
                     GameController.Attack(row, col);
             }
         }
@@ -67,7 +56,7 @@ namespace MyGame
             const int HITS_TOP = 206;
             const int SPLASH_TOP = 256;
 
-            if ((SwinGame.KeyDown(KeyCode.LeftKey) | SwinGame.KeyDown(KeyCode.RightShiftKey)) & SwinGame.KeyDown(KeyCode.CKey))
+            if ((SwinGame.KeyDown(KeyCode.LeftKey) || SwinGame.KeyDown(KeyCode.RightShiftKey)) && SwinGame.KeyDown(KeyCode.CKey))
                 UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, true);
             else
                 UtilityFunctions.DrawField(GameController.HumanPlayer.EnemyGrid, GameController.ComputerPlayer, false);

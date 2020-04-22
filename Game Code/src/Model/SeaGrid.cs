@@ -1,16 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
-using SwinGameSDK;
 
 namespace MyGame
 {
@@ -27,7 +16,7 @@ namespace MyGame
 		private const int _WIDTH = 10;
 		private const int _HEIGHT = 10;
 
-		private Tile[,] _GameTiles; // VBConversions Note: Initial value cannot be assigned here since it is non-static.  Assignment has been moved to the class constructors.
+		private Tile[,] _GameTiles;
 		private Dictionary<ShipName, Ship> _Ships;
 		private int _ShipsKilled = 0;
 
@@ -107,7 +96,6 @@ namespace MyGame
 		/// </summary>
 		public SeaGrid(Dictionary<ShipName, Ship> ships)
 		{
-			// VBConversions Note: Non-static class variable initialization is below.  Class variables cannot be initially assigned non-static values in C#.
 			_GameTiles = new Tile[Width, Height];
 
 			// Fill array with empty Tiles.
@@ -169,7 +157,7 @@ namespace MyGame
 				int i = 0;
 				for (i = 0; i <= size - 1; i++)
 				{
-					if (currentRow < 0 | currentRow >= Width | currentCol < 0 | currentCol >= Height)
+					if (currentRow < 0 || currentRow >= Width || currentCol < 0 || currentCol >= Height)
 					{
 						throw (new InvalidOperationException("Ship can't fit on the board"));
 					}

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
-using SwinGameSDK;
+﻿using SwinGameSDK;
 
 namespace MyGame
 {
@@ -26,7 +14,7 @@ namespace MyGame
         public static void DrawEndOfGame()
         {
             Rectangle toDraw = new Rectangle();
-            string whatShouldIPrint;
+            string resultMessage;
 
             UtilityFunctions.DrawField(GameController.ComputerPlayer.PlayerGrid, GameController.ComputerPlayer, true);
             UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
@@ -37,11 +25,11 @@ namespace MyGame
             toDraw.Height = SwinGame.ScreenHeight();
 
             if (GameController.HumanPlayer.IsDestroyed)
-                whatShouldIPrint = "YOU LOSE!";
+                resultMessage = "YOU LOSE!";
             else
-                whatShouldIPrint = "-- WINNER --";
+                resultMessage = "-- WINNER --";
 
-            SwinGame.DrawText(whatShouldIPrint, Color.White, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, toDraw);
+            SwinGame.DrawText(resultMessage, Color.White, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, toDraw);
         }
 
         /// <summary>

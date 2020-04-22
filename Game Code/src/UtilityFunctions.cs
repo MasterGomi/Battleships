@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
+﻿using System.Collections.Generic;
 using SwinGameSDK;
 
 namespace MyGame {
@@ -66,10 +55,10 @@ namespace MyGame {
             mouse = SwinGame.MousePosition();
 
             // if the mouse is inline with the button horizontally
-            if (mouse.X >= x & mouse.X <= x + w)
+            if (mouse.X >= x && mouse.X <= x + w)
             {
                 // Check vertical position
-                if (mouse.Y >= y & mouse.Y <= y + h)
+                if (mouse.Y >= y && mouse.Y <= y + h)
                     result = true;
             }
 
@@ -223,24 +212,12 @@ namespace MyGame {
             }
         }
 
-        private static string _message;
-
         /// <summary>
         /// The stored message. Will be displayed with DrawMessage().
         /// <value>The message to display</value>
         /// <returns>The message to display</returns>
         /// </summary>
-        public static string Message
-        {
-            get
-            {
-                return _message;
-            }
-            set
-            {
-                _message = value;
-            }
-        }
+        public static string Message { get; set; }
 
         /// <summary>
         /// Draws the message to the screen

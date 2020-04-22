@@ -132,7 +132,7 @@ namespace MyGame {
 
                 // For scores 1 - 9 use 01 - 09
                 if (i < 9)
-                    SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+                    SwinGame.DrawText("0" + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
                 else
                     SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
             }
@@ -181,13 +181,13 @@ namespace MyGame {
                     UtilityFunctions.DrawBackground();
                     DrawHighScores();
                     SwinGame.DrawText("Name: ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, ENTRY_TOP);
-                    SwinGame.RefreshScreen();
+                    SwinGame.RefreshScreen(60);
                 }
 
                 s.Name = SwinGame.TextReadAsASCII();
 
                 if (s.Name.Length < 3)
-                    s.Name = s.Name + new string(System.Convert.ToChar(" "), 3 - s.Name.Length);
+                    s.Name = s.Name + new string(' ', 3 - s.Name.Length);
 
                 _Scores.RemoveAt(_Scores.Count - 1);
                 _Scores.Add(s);
