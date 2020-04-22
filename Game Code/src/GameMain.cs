@@ -23,7 +23,8 @@ namespace MyGame
                 GameController.HandleUserInput();
                 GameController.DrawScreen();
             }
-            while (!WindowCloseRequested() == true | GameController.CurrentState == GameState.Quitting);
+            //Only run the loop until a window close request is processed, or the game state becomes 'quitting'
+            while (!WindowCloseRequested() && GameController.CurrentState != GameState.Quitting);
 
             StopMusic();
 
