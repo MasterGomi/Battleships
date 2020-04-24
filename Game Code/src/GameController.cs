@@ -87,7 +87,7 @@ namespace MyGame
             {
                 case AIOption.Easy:
                     {
-                        _ai = new AIHardPlayer(_theGame);
+                        _ai = new AIEasyPlayer(_theGame);
                         break;
                     }
                 case AIOption.Medium:
