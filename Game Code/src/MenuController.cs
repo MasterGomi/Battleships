@@ -1,4 +1,5 @@
-﻿using SwinGameSDK;
+﻿using System;
+using SwinGameSDK;
 
 namespace MyGame
 {
@@ -15,7 +16,7 @@ namespace MyGame
         /// These are the text captions for the menu items.
         /// </remarks>
         /// </summary>
-        private readonly static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
+        private readonly static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "VOLUME", "SCORES", "QUIT" }, new string[] { "RETURN", "VOLUME", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
         private static int MENU_TOP = 575;
         private static int MENU_LEFT = 30;
@@ -28,11 +29,13 @@ namespace MyGame
         private const int MAIN_MENU = 0;
         private const int GAME_MENU = 1;
         private const int SETUP_MENU = 2;
+        private const int VOLUME_MENU = 3;
 
         private const int MAIN_MENU_PLAY_BUTTON = 0;
         private const int MAIN_MENU_SETUP_BUTTON = 1;
-        private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
-        private const int MAIN_MENU_QUIT_BUTTON = 3;
+        private const int MAIN_MENU_VOLUME_BUTTON = 2;
+        private const int MAIN_MENU_TOP_SCORES_BUTTON = 3;
+        private const int MAIN_MENU_QUIT_BUTTON = 4;
 
         private const int SETUP_MENU_EASY_BUTTON = 0;
         private const int SETUP_MENU_MEDIUM_BUTTON = 1;
@@ -40,8 +43,14 @@ namespace MyGame
         private const int SETUP_MENU_EXIT_BUTTON = 3;
 
         private const int GAME_MENU_RETURN_BUTTON = 0;
-        private const int GAME_MENU_SURRENDER_BUTTON = 1;
-        private const int GAME_MENU_QUIT_BUTTON = 2;
+        private const int GAME_MENU_VOLUME_BUTTON = 1;
+        private const int GAME_MENU_SURRENDER_BUTTON = 2;
+        private const int GAME_MENU_QUIT_BUTTON = 3;
+
+        private readonly static int VOLUME_BUTTON_X = MENU_LEFT + BUTTON_SEP * 2 + 17;
+        private readonly static int VOLUME_BUTTON_Y = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT);
+        private readonly static int VOLUME_BUTTON_SIZE = BUTTON_HEIGHT;
+        private readonly static int VOLUME_BUTTON_GAP = 8;
 
         private readonly static Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
         private readonly static Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
@@ -65,6 +74,8 @@ namespace MyGame
             if (!handled)
                 HandleMenuInput(MAIN_MENU, 0, 0);
         }
+
+        
 
         /// <summary>
         /// Handle input in the game menu.
@@ -113,6 +124,47 @@ namespace MyGame
             return false;
         }
 
+        public static void HandleVolumeMenuInput(int primaryMenu)
+        {
+            if (SwinGame.KeyTyped(KeyCode.EscapeKey))
+            {
+                GameController.EndCurrentState();
+                return;
+            }
+            else if (SwinGame.MouseClicked(MouseButton.LeftButton))
+            {
+                if(UtilityFunctions.IsMouseInRectangle(VOLUME_BUTTON_X, VOLUME_BUTTON_Y, VOLUME_BUTTON_SIZE, VOLUME_BUTTON_SIZE))
+                {
+                    // Plus button
+                    UtilityFunctions.VolumeLevel += 0.1f;
+                    Audio.SetMusicVolume(UtilityFunctions.VolumeLevel);
+                }
+                else if(UtilityFunctions.IsMouseInRectangle(VOLUME_BUTTON_X + VOLUME_BUTTON_SIZE + VOLUME_BUTTON_GAP,
+                    VOLUME_BUTTON_Y, VOLUME_BUTTON_SIZE, VOLUME_BUTTON_SIZE))
+                {
+                    // Minus button
+                    UtilityFunctions.VolumeLevel -= 0.1f;
+                    Audio.SetMusicVolume(UtilityFunctions.VolumeLevel);
+                }
+                else
+                {
+                    // None clicked, so exit menu
+                    GameController.EndCurrentState();
+                    // And handle any clicks for primary menu
+                    if(primaryMenu == MAIN_MENU)
+                    {
+                        HandleMainMenuInput();
+                    }
+                    else if(primaryMenu == GAME_MENU)
+                    {
+                        HandleGameMenuInput();
+                    }
+                }
+            }
+
+            //return false;
+        }
+
         /// <summary>
         /// Draws the main menu to the screen.
         /// </summary>
@@ -140,6 +192,17 @@ namespace MyGame
         }
 
         /// <summary>
+        /// Draws the volume settings menu to the screen.
+        /// </summary>
+        /// <remarks>Also shows whatever menu it was opened from</remarks>
+        /// <param name="menu">The menu that the volume settings were opened from</param>
+        public static void DrawVolumeSettings(int menu)
+        {
+            DrawButtons(menu);
+            DrawVolumeButtons();
+        }
+
+        /// <summary>
         /// Draw the buttons associated with a top level menu.
         /// <param name="menu">the index of the menu to draw</param>
         /// </summary>
@@ -161,16 +224,13 @@ namespace MyGame
         /// </summary>
         private static void DrawButtons(int menu, int level, int xOffset)
         {
-            int btnTop;
+            int btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
             Rectangle toDraw = new Rectangle();
 
-            btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
             int i;
             for (i = 0; i <= _menuStructure[menu].Length - 1; i++)
             {
-                int btnLeft;
-
-                btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
+                int btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
                 // SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
                 toDraw.X = btnLeft + TEXT_OFFSET;
                 toDraw.Y = btnTop + TEXT_OFFSET;
@@ -181,6 +241,25 @@ namespace MyGame
                 if (SwinGame.MouseDown(MouseButton.LeftButton) && IsMouseOverMenu(i, level, xOffset))
                     SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
             }
+        }
+
+        private static void DrawVolumeButtons()
+        {
+            int level = 1;
+            int xOffset = 1;
+            Rectangle toDraw = new Rectangle();
+            int btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
+            int btnLeft = MENU_LEFT + BUTTON_SEP * xOffset;
+            toDraw.X = btnLeft + TEXT_OFFSET - 12;
+            toDraw.Y = btnTop + TEXT_OFFSET;
+            toDraw.Width = BUTTON_WIDTH + 17;
+            toDraw.Height = BUTTON_HEIGHT;
+            
+            int volumePercent = Convert.ToInt32(UtilityFunctions.VolumeLevel * 100);
+
+            SwinGame.DrawText("VOLUME: %" + volumePercent.ToString(), MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, toDraw);
+            SwinGame.DrawBitmap(GameResources.GameImage("Plus"), VOLUME_BUTTON_X, VOLUME_BUTTON_Y);
+            SwinGame.DrawBitmap(GameResources.GameImage("Minus"), VOLUME_BUTTON_X + VOLUME_BUTTON_SIZE + VOLUME_BUTTON_GAP, VOLUME_BUTTON_Y);
         }
 
         /// <summary>
@@ -257,6 +336,12 @@ namespace MyGame
                         break;
                     }
 
+                case MAIN_MENU_VOLUME_BUTTON:
+                    {
+                        GameController.AddNewState(GameState.AlteringVolume);
+                        break;
+                    }
+
                 case MAIN_MENU_TOP_SCORES_BUTTON:
                     {
                         GameController.AddNewState(GameState.ViewingHighScores);
@@ -312,6 +397,12 @@ namespace MyGame
                 case GAME_MENU_RETURN_BUTTON:
                     {
                         GameController.EndCurrentState();
+                        break;
+                    }
+
+                case GAME_MENU_VOLUME_BUTTON:
+                    {
+                        GameController.AddNewState(GameState.AlteringVolume);
                         break;
                     }
 

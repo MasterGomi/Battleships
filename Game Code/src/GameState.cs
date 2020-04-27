@@ -23,6 +23,11 @@
         AlteringSettings,
 
         /// <summary>
+        /// The player is altering the volume level
+        /// </summary>
+        AlteringVolume,
+
+        /// <summary>
         /// Players are deploying their ships
         /// </summary>
         Deploying,

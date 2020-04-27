@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using SwinGameSDK;
 
@@ -144,7 +145,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddExplosion(row, column);
 
-            Audio.PlaySoundEffect(GameResources.GameSound("Hit"));
+            Audio.PlaySoundEffect(GameResources.GameSound("Hit"), UtilityFunctions.VolumeLevel);
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -154,7 +155,7 @@ namespace MyGame
             if (showAnimation)
                 UtilityFunctions.AddSplash(row, column);
 
-            Audio.PlaySoundEffect(GameResources.GameSound("Miss"));
+            Audio.PlaySoundEffect(GameResources.GameSound("Miss"), UtilityFunctions.VolumeLevel);
 
             UtilityFunctions.DrawAnimationSequence();
         }
@@ -182,14 +183,14 @@ namespace MyGame
                 case ResultOfAttack.Destroyed:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"), UtilityFunctions.VolumeLevel);
                         break;
                     }
 
                 case ResultOfAttack.GameOver:
                     {
                         PlayHitSequence(result.Row, result.Column, isHuman);
-                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Sink"), UtilityFunctions.VolumeLevel);
 
                         while (Audio.SoundEffectPlaying(GameResources.GameSound("Sink")))
                         {
@@ -198,9 +199,9 @@ namespace MyGame
                         }
 
                         if (HumanPlayer.IsDestroyed)
-                            Audio.PlaySoundEffect(GameResources.GameSound("Lose"));
+                            Audio.PlaySoundEffect(GameResources.GameSound("Lose"), UtilityFunctions.VolumeLevel);
                         else
-                            Audio.PlaySoundEffect(GameResources.GameSound("Winner"));
+                            Audio.PlaySoundEffect(GameResources.GameSound("Winner"), UtilityFunctions.VolumeLevel);
                         break;
                     }
 
@@ -218,7 +219,7 @@ namespace MyGame
 
                 case ResultOfAttack.ShotAlready:
                     {
-                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Error"), UtilityFunctions.VolumeLevel);
                         break;
                     }
             }
@@ -329,6 +330,19 @@ namespace MyGame
                         break;
                     }
 
+                case GameState.AlteringVolume:
+                    {
+                        if (_state.Skip(1).First() == GameState.ViewingGameMenu)
+                        {
+                            MenuController.HandleVolumeMenuInput(1);
+                        }
+                        else if (_state.Skip(1).First() == GameState.ViewingMainMenu)
+                        {
+                            MenuController.HandleVolumeMenuInput(0);
+                        }
+                        break;
+                    }
+
                 case GameState.Deploying:
                     {
                         DeploymentController.HandleDeploymentInput();
@@ -384,6 +398,19 @@ namespace MyGame
                 case GameState.AlteringSettings:
                     {
                         MenuController.DrawSettings();
+                        break;
+                    }
+
+                case GameState.AlteringVolume:
+                    {
+                        if(_state.Skip(1).First() == GameState.ViewingGameMenu)
+                        {
+                            MenuController.DrawVolumeSettings(1);
+                        }
+                        else if(_state.Skip(1).First() == GameState.ViewingMainMenu)
+                        {
+                            MenuController.DrawVolumeSettings(0);
+                        }
                         break;
                     }
 

@@ -11,8 +11,9 @@ namespace MyGame
 
             // Load Resources
             GameResources.LoadResources();
-
+            
             PlayMusic(GameResources.GameMusic("Background"));
+            SetMusicVolume(UtilityFunctions.VolumeLevel);
 
             // Game Loop
             do
