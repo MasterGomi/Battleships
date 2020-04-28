@@ -171,7 +171,15 @@ namespace MyGame {
                 int x;
                 x = SCORES_LEFT + SwinGame.TextWidth(GameResources.GameFont("Courier"), "Name: ");
 
-                SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameResources.GameFont("Courier"), x, ENTRY_TOP);
+                Rectangle nameEntryArea = new Rectangle
+                {
+                    X = x,
+                    Y = ENTRY_TOP,
+                    Width = 20,
+                    Height = 10
+                };
+
+                SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameResources.GameFont("Courier"), nameEntryArea);
 
                 // Read the text from the user
                 while (SwinGame.ReadingText())
