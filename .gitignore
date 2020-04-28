@@ -1,4 +1,7 @@
-bin
+!Game Code/bin/debug
+Game Code/bin/Debug/*
+!Game Code/bin/Debug/Resources
+!Game Code/bin/Debug/Resources/**
 tmp
 out.log
 .DS_Store

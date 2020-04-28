@@ -42,6 +42,10 @@ namespace MyGame
             // Explosions
             NewImage("Explosion", "explosion.png");
             NewImage("Splash", "splash.png");
+
+            // Menu buttons
+            NewImage("Plus", "plus.png");
+            NewImage("Minus", "minus.png");
         }
 
         private static void LoadSounds()
@@ -170,7 +174,7 @@ namespace MyGame
         {
             const int ANI_CELL_COUNT = 11;
 
-            Audio.PlaySoundEffect(_StartSound);
+            Audio.PlaySoundEffect(_StartSound, UtilityFunctions.VolumeLevel);
             SwinGame.Delay(200);
 
             int i;

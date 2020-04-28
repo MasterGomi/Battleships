@@ -103,7 +103,7 @@ namespace MyGame {
                     }
                     catch (Exception ex)
                     {
-                        Audio.PlaySoundEffect(GameResources.GameSound("Error"));
+                        Audio.PlaySoundEffect(GameResources.GameSound("Error"), UtilityFunctions.VolumeLevel);
                         UtilityFunctions.Message = ex.Message;
                     }
                 }

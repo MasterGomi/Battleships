@@ -39,6 +39,24 @@ namespace MyGame {
         public const int ANIMATION_CELLS = 7;
         public const int FRAMES_PER_CELL = 8;
 
+        private static float _volumeLevel = 0.7f;
+        public static float VolumeLevel
+        {
+            get { return _volumeLevel; }
+            set
+            {
+                _volumeLevel = value;
+                if (_volumeLevel > 1)
+                {
+                    _volumeLevel = 1;
+                }
+                else if (_volumeLevel < 0)
+                {
+                    _volumeLevel = 0;
+                }
+            }
+        }
+
         /// <summary>
         /// Determines if the mouse is in a given rectangle.
         /// <param name="x">the x location to check</param>
@@ -237,6 +255,7 @@ namespace MyGame {
                 case GameState.ViewingMainMenu:
                 case GameState.ViewingGameMenu:
                 case GameState.AlteringSettings:
+                case GameState.AlteringVolume:
                 case GameState.ViewingHighScores:
                     {
                         SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
