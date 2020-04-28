@@ -127,7 +127,7 @@ namespace MyGame {
         /// <param name="cellGap">the gap between the cells</param>
         private static void DrawCustomField(ISeaGrid grid, Player thePlayer, bool small, bool showShips, int left, int top, int width, int height, int cellWidth, int cellHeight, int cellGap)
         {
-            // SwinGame.FillRectangle(Color.Blue, left, top, width, height)
+            //SwinGame.FillRectangle(Color.Blue, left, top, width, height);
 
             int rowTop;
             int colLeft;
@@ -282,12 +282,12 @@ namespace MyGame {
                     }
             }
 
-            SwinGame.DrawFramerate(675, 585);
+            SwinGame.DrawFramerate(600, 585);
         }
 
         public static void AddExplosion(int row, int col)
         {
-            AddAnimation(row, col, "Splash");
+            AddAnimation(row, col, "Explosion");
         }
 
         public static void AddSplash(int row, int col)
