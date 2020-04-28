@@ -310,6 +310,17 @@ namespace MyGame
             // Read incoming input events.
             SwinGame.ProcessEvents();
 
+            if(SwinGame.KeyTyped(KeyCode.EqualsKey) || SwinGame.KeyTyped(KeyCode.PlusKey))
+            {
+                UtilityFunctions.VolumeLevel += 0.1f;
+                Audio.SetMusicVolume(UtilityFunctions.VolumeLevel);
+            }
+            else if(SwinGame.KeyTyped(KeyCode.UnderscoreKey) || SwinGame.KeyTyped(KeyCode.MinusKey))
+            {
+                UtilityFunctions.VolumeLevel -= 0.1f;
+                Audio.SetMusicVolume(UtilityFunctions.VolumeLevel);
+            }
+
             switch (CurrentState)
             {
                 case GameState.ViewingMainMenu:
