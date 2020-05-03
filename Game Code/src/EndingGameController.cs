@@ -13,23 +13,48 @@ namespace MyGame
         /// </summary>
         public static void DrawEndOfGame()
         {
-            Rectangle toDraw = new Rectangle();
-            string resultMessage;
+            const int TITLE_TOP = 100;
+            const int MESSAGE_TOP = 400;
 
-            UtilityFunctions.DrawField(GameController.ComputerPlayer.PlayerGrid, GameController.ComputerPlayer, true);
-            UtilityFunctions.DrawSmallField(GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
+            Color messageColor;
 
-            toDraw.X = 0;
-            toDraw.Y = 250;
-            toDraw.Width = SwinGame.ScreenWidth();
-            toDraw.Height = SwinGame.ScreenHeight();
+            string resultTitle = "";
+            string resultMessage = "";
+
+            Rectangle resultTitleRectangle = new Rectangle
+            {
+                X = 0,
+                Y = TITLE_TOP,
+                Width = SwinGame.ScreenWidth(),
+                Height = SwinGame.ScreenHeight()
+            };
+
+            Rectangle resultMessageRectangle = new Rectangle
+            {
+                X = 0,
+                Y = MESSAGE_TOP,
+                Width = SwinGame.ScreenWidth(),
+                Height = SwinGame.ScreenHeight()
+            };
+
 
             if (GameController.HumanPlayer.IsDestroyed)
-                resultMessage = "YOU LOSE!";
-            else
-                resultMessage = "-- WINNER --";
+            {
+                resultTitle = "-- LOSER --";
+                resultMessage = "Better luck next time!";
 
-            SwinGame.DrawText(resultMessage, Color.White, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, toDraw);
+                messageColor = Color.Red;
+            }
+            else
+            {
+                resultTitle = "-- WINNER --";
+                resultMessage = "Congratulations on the win!";
+
+                messageColor = Color.Green;
+            }
+
+            SwinGame.DrawText(resultTitle, Color.White, Color.Transparent, GameResources.GameFont("ArialLarge"), FontAlignment.AlignCenter, resultTitleRectangle);
+            SwinGame.DrawText(resultMessage, Color.White, messageColor, GameResources.GameFont("Arial"), FontAlignment.AlignCenter, resultMessageRectangle);
         }
 
         /// <summary>
@@ -41,8 +66,8 @@ namespace MyGame
         {
             if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.ReturnKey) || SwinGame.KeyTyped(KeyCode.EscapeKey))
             {
-                HighScoreController.ReadHighScore(GameController.HumanPlayer.Score);
                 GameController.EndCurrentState();
+                HighScoreController.ReadHighScore(GameController.HumanPlayer.Score);
             }
         }
     }
