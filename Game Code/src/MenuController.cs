@@ -1,4 +1,5 @@
 ﻿using SwinGameSDK;
+using System;
 
 namespace MyGame
 {
@@ -15,7 +16,7 @@ namespace MyGame
         /// These are the text captions for the menu items.
         /// </remarks>
         /// </summary>
-        private readonly static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
+        private readonly static string[][] _menuStructure = new[] { new string[] { "PLAY", "SETUP", "SCORES","RULES","CONTROLS", "QUIT" }, new string[] { "RETURN", "SURRENDER", "QUIT" }, new string[] { "EASY", "MEDIUM", "HARD" } };
 
         private static int MENU_TOP = 575;
         private static int MENU_LEFT = 30;
@@ -24,15 +25,17 @@ namespace MyGame
         private static int BUTTON_HEIGHT = 15;
         private static int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
         private static int TEXT_OFFSET = 0;
-
+        private static int MENU_VALUE = 0;
         private const int MAIN_MENU = 0;
         private const int GAME_MENU = 1;
         private const int SETUP_MENU = 2;
-
+        
         private const int MAIN_MENU_PLAY_BUTTON = 0;
         private const int MAIN_MENU_SETUP_BUTTON = 1;
         private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
-        private const int MAIN_MENU_QUIT_BUTTON = 3;
+        private const int MAIN_MENU_RULES_BUTTON = 3;
+        private const int MAIN_MENU_CONTROLS_BUTTON = 4;
+        private const int MAIN_MENU_QUIT_BUTTON = 5;
 
         private const int SETUP_MENU_EASY_BUTTON = 0;
         private const int SETUP_MENU_MEDIUM_BUTTON = 1;
@@ -241,6 +244,43 @@ namespace MyGame
         /// The main menu was clicked, perform the button's action.
         /// <param name="button">the button pressed</param>
         /// </summary>
+        /// 
+
+        public static void HandleControlersMenu()
+        {
+            drawControls();
+            if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.EscapeKey) || SwinGame.KeyTyped(KeyCode.ReturnKey))
+            {
+                MENU_VALUE++;
+                drawControls();
+                if (MENU_VALUE > 2)
+                {
+                    MENU_VALUE = 0;
+                    GameController.EndCurrentState();
+                }
+            }
+              
+        }
+        public static void drawControls()
+        {
+            switch(MENU_VALUE)
+            {
+                case 0:
+                    SwinGame.DrawBitmap(GameResources.GameImage("Tutorial1"), 0, 0);
+                    break;
+                case 1:
+                    SwinGame.DrawBitmap(GameResources.GameImage("Tutorial2"), 0, 0);
+                    break;
+                case 2:
+                    SwinGame.DrawBitmap(GameResources.GameImage("Tutorial3"), 0, 0);
+                    break;
+            }
+         
+        }
+         public static void drawRules() {
+            SwinGame.DrawBitmap(GameResources.GameImage("RulesPanel"), 0, 0);
+    }
+
         private static void PerformMainMenuAction(int button)
         {
             switch (button)
@@ -254,6 +294,16 @@ namespace MyGame
                 case MAIN_MENU_SETUP_BUTTON:
                     {
                         GameController.AddNewState(GameState.AlteringSettings);
+                        break;
+                    }
+                case MAIN_MENU_RULES_BUTTON:
+                    {
+                        GameController.AddNewState(GameState.Rules);
+                        break;
+                    }
+                case MAIN_MENU_CONTROLS_BUTTON:
+                    {
+                        GameController.AddNewState(GameState.Controls);
                         break;
                     }
 

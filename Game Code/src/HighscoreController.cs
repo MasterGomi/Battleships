@@ -13,7 +13,7 @@ namespace MyGame {
     static class HighScoreController
     {
         private const int NAME_WIDTH = 3;
-        private const int SCORES_LEFT = 490;
+        private const int SCORES_LEFT = (GameMain.GameWidth / 2) - 60;
 
         /// <summary>
         /// The score structure is used to keep the name and
@@ -116,14 +116,15 @@ namespace MyGame {
             const int SCORES_HEADING = 40;
             const int SCORES_TOP = 80;
             const int SCORE_GAP = 30;
-
+            
             if (_Scores.Count == 0)
                 LoadScores();
-
+            SwinGame.DrawBitmap(GameResources.GameImage("HighScoresPanel"), 200, 20);
             SwinGame.DrawText("   High Scores   ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
-
+     
             // For all of the scores
             int i;
+            SwinGame.DrawText("Rank" + ":   " + "Name" + "   " + "Score", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT-15, SCORES_TOP);
             for (i = 0; i <= _Scores.Count - 1; i++)
             {
                 Score s;
@@ -132,9 +133,9 @@ namespace MyGame {
 
                 // For scores 1 - 9 use 01 - 09
                 if (i < 9)
-                    SwinGame.DrawText("0" + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+                    SwinGame.DrawText("0" + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + (i+1) * SCORE_GAP);
                 else
-                    SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+                    SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + (i+1) * SCORE_GAP);
             }
         }
 
@@ -179,6 +180,8 @@ namespace MyGame {
                     SwinGame.ProcessEvents();
 
                     UtilityFunctions.DrawBackground();
+                    Console.WriteLine("loaded");
+                   
                     DrawHighScores();
                     SwinGame.DrawText("Name: ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, ENTRY_TOP);
                     SwinGame.RefreshScreen(60);

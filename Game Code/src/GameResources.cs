@@ -25,6 +25,11 @@ namespace MyGame
             NewImage("Deploy", "deploy.jpg");
 
             // Deployment
+            NewImage("HighScoresPanel", "High_Scores_Panel.png");
+            NewImage("Tutorial1", "Tutorial1.png");
+            NewImage("Tutorial2", "Tutorial2.png");
+            NewImage("Tutorial3", "Tutorial3.png");
+            NewImage("RulesPanel", "RulesImage.png");
             NewImage("LeftRightButton", "deploy_dir_button_horiz.png");
             NewImage("UpDownButton", "deploy_dir_button_vert.png");
             NewImage("SelectedShip", "deploy_button_hl.png");
