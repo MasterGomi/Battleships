@@ -258,8 +258,8 @@ namespace MyGame
             int volumePercent = Convert.ToInt32(UtilityFunctions.VolumeLevel * 100);
 
             SwinGame.DrawText("VOLUME: %" + volumePercent.ToString(), MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, toDraw);
-            SwinGame.DrawBitmap(GameResources.GameImage("Plus"), VOLUME_BUTTON_X, VOLUME_BUTTON_Y);
-            SwinGame.DrawBitmap(GameResources.GameImage("Minus"), VOLUME_BUTTON_X + VOLUME_BUTTON_SIZE + VOLUME_BUTTON_GAP, VOLUME_BUTTON_Y);
+            SwinGame.DrawBitmap(GameResources.GameImage("Plus", GameResources.GameTheme), VOLUME_BUTTON_X, VOLUME_BUTTON_Y);
+            SwinGame.DrawBitmap(GameResources.GameImage("Minus", GameResources.GameTheme), VOLUME_BUTTON_X + VOLUME_BUTTON_SIZE + VOLUME_BUTTON_GAP, VOLUME_BUTTON_Y);
         }
 
         /// <summary>

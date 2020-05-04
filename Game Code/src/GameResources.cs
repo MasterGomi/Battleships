@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.IO;
+using System.Collections.Generic;
 using SwinGameSDK;
 
 namespace MyGame
@@ -9,6 +11,15 @@ namespace MyGame
     /// </summary>
     public static class GameResources
     {
+        private static Dictionary<Theme, string> _themeFolders = new Dictionary<Theme, string>()
+        {
+            {Theme.Rainbow, "rainbow-theme" },
+            // Add the name of the resources/images sub-directory that contains the theme's files here
+            // (make sure there's an enum value created first), and the code will take care of the rest
+        };
+
+        public static Theme GameTheme = Theme.Default;
+
         private static void LoadFonts()
         {
             NewFont("ArialLarge", "arial.ttf", 80);
@@ -77,10 +88,18 @@ namespace MyGame
         /// <summary>
         /// Gets an Image loaded in the Resources.
         /// <param name="image">Name of image</param>
+        /// <param name="theme">The theme to get the image from (defaults to Theme.Default)</param>
         /// <returns>The image loaded with this name</returns>
         /// </summary>
-        public static Bitmap GameImage(string image)
+        public static Bitmap GameImage(string image, Theme theme = Theme.Default)
         {
+            if(theme != Theme.Default)
+            {
+                if(_Images.ContainsKey(_themeFolders[theme] + image))
+                {
+                    return _Images[_themeFolders[theme] + image];
+                }
+            }
             return _Images[image];
         }
 
@@ -240,7 +259,18 @@ namespace MyGame
 
         private static void NewImage(string imageName, string filename)
         {
+            // Load the default theme assets
             _Images.Add(imageName, SwinGame.LoadBitmap(SwinGame.PathToResource(filename, ResourceKind.BitmapResource)));
+
+            // Then load assets for any other theme
+            foreach (string theme in _themeFolders.Values)
+            {
+                string filepath = SwinGame.PathToResource(filename, ResourceKind.BitmapResource, theme);
+                if (File.Exists(filepath))
+                {
+                    _Images.Add(theme + imageName, SwinGame.LoadBitmap(filepath));
+                }
+            }
         }
 
         private static void NewTransparentColorImage(string imageName, string fileName, Color transColor)

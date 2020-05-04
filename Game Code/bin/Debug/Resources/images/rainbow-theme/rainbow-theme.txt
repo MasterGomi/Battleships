@@ -1,0 +1,19 @@
+# List of alternate images for the Rainbow theme:
+
+deploy.jpg
+deploy_button.png
+deploy_dir_button_horiz.png
+deploy_dir_button_vert.png
+deploy_play_button.png
+deploy_randomize_button.png
+discover.jpg
+ship_deploy_horiz_1.png
+ship_deploy_horiz_2.png
+ship_deploy_horiz_3.png
+ship_deploy_horiz_4.png
+ship_deploy_horiz_5.png
+ship_deploy_vert_1.png
+ship_deploy_vert_2.png
+ship_deploy_vert_3.png
+ship_deploy_vert_4.png
+ship_deploy_vert_5.png

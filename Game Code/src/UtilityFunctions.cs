@@ -221,7 +221,7 @@ namespace MyGame {
                 }
 
                 if (!small)
-                    SwinGame.DrawBitmap(GameResources.GameImage(shipName), colLeft, rowTop);
+                    SwinGame.DrawBitmap(GameResources.GameImage(shipName, GameResources.GameTheme), colLeft, rowTop);
                 else
                 {
                     SwinGame.FillRectangle(SHIP_FILL_COLOR, colLeft, rowTop, shipWidth, shipHeight);
@@ -258,20 +258,20 @@ namespace MyGame {
                 case GameState.AlteringVolume:
                 case GameState.ViewingHighScores:
                     {
-                        SwinGame.DrawBitmap(GameResources.GameImage("Menu"), 0, 0);
+                        SwinGame.DrawBitmap(GameResources.GameImage("Menu", GameResources.GameTheme), 0, 0);
                         break;
                     }
 
                 case GameState.Discovering:
                 case GameState.EndingGame:
                     {
-                        SwinGame.DrawBitmap(GameResources.GameImage("Discovery"), 0, 0);
+                        SwinGame.DrawBitmap(GameResources.GameImage("Discovery", GameResources.GameTheme), 0, 0);
                         break;
                     }
 
                 case GameState.Deploying:
                     {
-                        SwinGame.DrawBitmap(GameResources.GameImage("Deploy"), 0, 0);
+                        SwinGame.DrawBitmap(GameResources.GameImage("Deploy", GameResources.GameTheme), 0, 0);
                         break;
                     }
 
@@ -302,7 +302,7 @@ namespace MyGame {
             Sprite s;
             Bitmap imgObj;
 
-            imgObj = GameResources.GameImage(image);
+            imgObj = GameResources.GameImage(image, GameResources.GameTheme);
             imgObj.SetCellDetails(40, 40, 3, 3, 7);
 
             AnimationScript animation;

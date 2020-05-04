@@ -321,6 +321,16 @@ namespace MyGame
                 Audio.SetMusicVolume(UtilityFunctions.VolumeLevel);
             }
 
+            // Switch through themes
+            if (SwinGame.KeyTyped(KeyCode.TKey))
+            {
+                GameResources.GameTheme++;
+                if(!Enum.IsDefined(typeof(Theme), GameResources.GameTheme))
+                {
+                    GameResources.GameTheme = 0;
+                }
+            }
+
             switch (CurrentState)
             {
                 case GameState.ViewingMainMenu:

@@ -120,9 +120,9 @@ namespace MyGame {
 
             // Draw the Left/Right and Up/Down buttons.
             if (_currentDirection == Direction.LeftRight)
-                SwinGame.DrawBitmap(GameResources.GameImage("LeftRightButton"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
+                SwinGame.DrawBitmap(GameResources.GameImage("LeftRightButton", GameResources.GameTheme), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
             else
-                SwinGame.DrawBitmap(GameResources.GameImage("UpDownButton"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
+                SwinGame.DrawBitmap(GameResources.GameImage("UpDownButton", GameResources.GameTheme), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
 
             // DrawShips
             foreach (ShipName sn in Enum.GetValues(typeof(ShipName)))
@@ -133,16 +133,16 @@ namespace MyGame {
                 {
                     if (sn == _selectedShip)
                     {
-                        SwinGame.DrawBitmap(GameResources.GameImage("SelectedShip"), SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT);
+                        SwinGame.DrawBitmap(GameResources.GameImage("SelectedShip", GameResources.GameTheme), SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT);
                         break;
                     }
                 }
             }
 
             if (GameController.HumanPlayer.ReadyToDeploy)
-                SwinGame.DrawBitmap(GameResources.GameImage("PlayButton"), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);
+                SwinGame.DrawBitmap(GameResources.GameImage("PlayButton", GameResources.GameTheme), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);
 
-            SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
+            SwinGame.DrawBitmap(GameResources.GameImage("RandomButton", GameResources.GameTheme), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
 
             UtilityFunctions.DrawMessage();
         }
