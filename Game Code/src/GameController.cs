@@ -350,6 +350,17 @@ namespace MyGame
                         MenuController.HandleSetupMenuInput();
                         break;
                     }
+                case GameState.Rules:
+                    {
+                        HighScoreController.HandleHighScoreInput();
+                        break;
+                    }
+
+                case GameState.Controls:
+                    {
+                        MenuController.HandleControlersMenu();
+                        break;
+                    }
 
                 case GameState.AlteringVolume:
                     {
@@ -419,6 +430,16 @@ namespace MyGame
                 case GameState.AlteringSettings:
                     {
                         MenuController.DrawSettings();
+                        break;
+                    }
+                case GameState.Rules:
+                    {
+                        MenuController.drawRules();
+                        break;
+                    }
+                case GameState.Controls:
+                    {
+                        MenuController.drawControls();
                         break;
                     }
 

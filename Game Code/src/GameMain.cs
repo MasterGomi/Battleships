@@ -4,6 +4,8 @@ namespace MyGame
 {
     public class GameMain
     {
+        public const int GameWidth = 800;
+        public const int GameHeight = 600;
         public static void Main()
         {
             // Opens a new Graphics Window
