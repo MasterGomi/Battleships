@@ -30,7 +30,6 @@ namespace MyGame
         private const int GAME_MENU = 1;
         private const int SETUP_MENU = 2;
         private const int VOLUME_MENU = 3;
-
         private const int MAIN_MENU_PLAY_BUTTON = 0;
         private const int MAIN_MENU_SETUP_BUTTON = 1;
         private const int MAIN_MENU_VOLUME_BUTTON = 2;
