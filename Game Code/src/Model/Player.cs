@@ -212,7 +212,6 @@ namespace MyGame
         /// </summary>
         internal AttackResult Shoot(int row, int col)
         {
-            _shots += 1;
             AttackResult result;
             result = EnemyGrid.HitTile(row, col);
 
@@ -221,12 +220,14 @@ namespace MyGame
                 case ResultOfAttack.Destroyed:
                 case ResultOfAttack.Hit:
                     {
+                        _shots += 1;
                         _hits += 1;
                         break;
                     }
 
                 case ResultOfAttack.Miss:
                     {
+                        _shots += 1;
                         _misses += 1;
                         break;
                     }
